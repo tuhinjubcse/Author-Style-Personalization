@@ -2508,7 +2508,10 @@
                         "Excerpt2": "Human",
                         "Human_Author": "James_Braun"
                     },
-                    "style_annotator": "Caroline_Porter3"
+                    "Preference": "Excerpt1",
+                    "style_annotator": "Caroline_Porter3",
+                    "Reason": "P1 is more similar to the Original than P2. The Original's voice feels informal, with a cadence that mimics speech with its digressions and interruptions, particularly via the use of emdashes (Original: \"The fantasy never got beyond that --I didn't let it-- and though the tears rolled down my face, I wasn't sobbing or out of control.\"). P1 has a similar voice, albeit a bit more formal-feeling than the Original (P1: \"And then, as though my mind had been waiting for just such a moment, I saw him—or rather, allowed myself to see him—Tommy...\"), allowing for interruptions and digressions, whereas P2's voice feels more restrained and self-contained, more interested in the narrative it discloses than the voice, with its asides enclosed in commas rather than emdashes (P2: \"There once existed a time here, I suppose, when I could walk this windswept field without knocking my feet against all that came before.\"). The Original and P1 also feels grounded more in the present, the immediate fantasy of the scene, whereas P2 feels more reflective and focused on the past (P2: \"There was a morning just like this one, only as far back as a month ago.\")."
+
                 }
             ]
         ]
@@ -3463,7 +3466,10 @@
                         "Excerpt2": "Human",
                         "Human_Author": "Cara"
                     },
-                    "style_annotator": "Caroline_Porter3"
+                    "Preference": "Excerpt1",
+                    "style_annotator": "Caroline_Porter3",
+                    "Reason": "P1 is more similar to the Original than P2. While both P1 and P2 feature the Originals long, sweeping style sentence structures and a similar informality of narrative voice, P1 stands out in that it is able to access the Original's level of humor a bit better than P2, which remains overly serious in tone (Original: \"...if the previous night’s Subject is still there, wanting to twitter, or to cuddle and, like, spoon...\" P1: \"...the presence of a Subject—the capital \"S\" both deliberate and derisive, a holdover from what Orin thought of as his internal marketing manual for coping with emotional distance\" P2: \"...he finds himself privately ruminating on his disturbing and repetitive nightmares while he and the Subject are cuddling, chatting or cooking breakfast together...\")."
+
                 }
             ]
         ],
