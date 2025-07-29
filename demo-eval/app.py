@@ -14,47 +14,13 @@ from filelock import FileLock
 app = Flask(__name__)
 app.secret_key = 'your-secret-key'  # Change this in production
 
-# --- 1) Style-only user credentials ---
-users = {
-    "Celeste": "Celestexv129",
-    "Sophia": "Sophiaub456",
-    "Adesuwa_Agbonile": "Adesuwawz567",
-    "Sean_Cavanaugh": "Seanyh872",
-    "Rachael": "Rachaellk907",
-    "James_Braun": "Jamescx410",
-    "James_Cato": "Jamesgh567",
-    "Harry": "Harrybh639",
-    "Hank": "Hankkq837",
-    "Renne_Flory": "Renneut437",
-    "Connor": "Connorsd615",
-    "Caroline_Waring": "Carolinefp417",
-    "Caroline_Porter": "Carolineyv953",
-    "Benjamin": "Benjamingv678",
-    "Ashni": "Ashnisk741",
-    "Devanshi": "Devanshilo277",
-    "Cara": "Carart874",
-    "Sara": "Sarayt811",
-    "Brianna_Uzoh": "Brianna556",
-    "Yash": "Yashuj765",
-    "Devin": "Devinld484",
-    "Tian": "Tianxw655",
-    "Stefan": "Stefanxc771",
-    "Yen": "Yenop147",
-    "Lior": "Liored548",
-    "Natalie": "Nataliexn751",
-    "Jon": "Joncv680",
-    "Hayden": "Haydengh661",
-    "Lauren": "Laurenop793",
-    "Brandyn": "Brandyntt761",
-    "Mar": "Markl908",
+
+users = { 
     "dhillonp": "dhillonp123"
+    "tuhinc" : "tuhinc456"
 }
 
-style_users = [
-    'Connor', 'Harry', 'Caroline_Waring','Celeste', 'Sara', 'Benjamin','Sean_Cavanaugh', 'Tian',
-    'Caroline_Porter', 'Yen', 'Yash',
-    'Hayden', 'Lauren', 'Brandyn', 'Anne'
-]
+style_users = ['dhillonp']
 
 # --- 2) Combined-user pool and locking ---
 AVAILABLE_USERS_PATH = 'available_users.json'
@@ -372,10 +338,7 @@ def review_both():
             "Preference":     pref,
             "Reason":         reason
         }
-        if idx >= 1 and username!='6UI3edt':
-            resp["Original"] = current["Original"]
-
-        if username=='6UI3edt' and idx>=2:
+        if idx >= 10:
             resp["Original"] = current["Original"]
 
         responses_path = os.path.join('annotator_files', f"{username}_responses.json")
@@ -394,13 +357,10 @@ def review_both():
         return redirect(url_for('review_both'))
 
     # 4) GET: render quality vs style templates
-    if idx < 1 and username!='6UI3edt':
+    if idx < 10:
         return render_template('review.html', entry=entries[idx])
     else:
-        if idx < 2 and username=='6UI3edt':
-            return render_template('review.html', entry=entries[idx])
-        else:
-            return render_template('review_style.html', entry=entries[idx])
+        return render_template('review_style.html', entry=entries[idx])
 
 
 @app.route('/complete')
