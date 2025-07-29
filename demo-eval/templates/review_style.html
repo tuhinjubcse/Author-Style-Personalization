@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Review Response</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; }
+      .container {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+      }
+      .original-paragraph {
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         margin-bottom: 20px;
+      }
+      .original-paragraph textarea {
+         width: 100%;
+         height: 200px;
+         margin: 10px;
+         resize: vertical;
+         overflow: auto;
+         font-size: 12px;
+         background-color: #f9f9f9;
+      }
+      .paragraphs {
+         display: flex;
+         justify-content: center;
+         margin-bottom: 20px;
+         width: 100%;
+      }
+      textarea.readonly {
+         width: 500px;
+         height: 200px;
+         margin: 10px;
+         resize: vertical;
+         overflow: auto;
+         font-size: 12px;
+      }
+      .selection {
+         display: flex;
+         align-items: flex-start;
+         margin-bottom: 20px;
+      }
+      .radio-buttons {
+         margin-right: 20px;
+      }
+      .reason-box textarea {
+         width: 500px;
+         height: 100px;
+         resize: vertical;
+         font-size: 12px;
+      }
+      .paragraph-label {
+         font-weight: bold;
+         margin-bottom: 5px;
+      }
+      #reason-error {
+         color: red;
+         display: none;
+         margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 5px;">
+        Which response is closer to the “Original” paragraph in voice and style?
+      </h2>
+
+      <div class="original-paragraph">
+        <div class="paragraph-label">Original</div>
+        <textarea class="readonly" readonly>{{ entry.Original }}</textarea>
+      </div>
+
+      <div class="paragraphs">
+        <div>
+          <div class="paragraph-label">Excerpt 1</div>
+          <textarea class="readonly" readonly>{{ entry.Paragraph1 }}</textarea>
+        </div>
+        <div>
+          <div class="paragraph-label">Excerpt 2</div>
+          <textarea class="readonly" readonly>{{ entry.Paragraph2 }}</textarea>
+        </div>
+      </div>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul style="color:red;">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <form id="review-form" method="POST">
+        <div class="selection">
+          <div class="radio-buttons">
+            <input type="radio" id="para1" name="preference" value="Paragraph1" required>
+            <label for="para1">Excerpt 1</label><br>
+            <input type="radio" id="para2" name="preference" value="Paragraph2">
+            <label for="para2">Excerpt 2</label>
+          </div>
+          <div class="reason-box">
+            <label for="reason">Reason:</label><br>
+            <textarea
+              id="reason"
+              name="reason"
+              placeholder="Enter your reason here. Explain why your chosen excerpt better matches the style of the original. Cite specific snippets."
+              required
+            ></textarea>
+            <div id="reason-error">
+              Please enter at least 50 words.
+              (<span id="word-count">0</span> words so far)
+            </div>
+          </div>
+        </div>
+
+        <input type="submit" id="submit-btn" value="Next" disabled>
+      </form>
+    </div>
+
+    <script>
+      (function() {
+        const reasonEl = document.getElementById('reason');
+        const submitBtn = document.getElementById('submit-btn');
+        const errorDiv   = document.getElementById('reason-error');
+        const countSpan  = document.getElementById('word-count');
+
+        function updateWordCount() {
+          const words = reasonEl.value
+            .trim()
+            .split(/\s+/)
+            .filter(w => w.length > 0);
+          const n = words.length;
+          countSpan.textContent = n;
+          if (n >= 50) {
+            errorDiv.style.display = 'none';
+            submitBtn.disabled = false;
+          } else {
+            errorDiv.style.display = 'block';
+            submitBtn.disabled = true;
+          }
+        }
+
+        reasonEl.addEventListener('input', updateWordCount);
+        document.addEventListener('DOMContentLoaded', updateWordCount);
+      })();
+    </script>
+  </body>
+</html>
+

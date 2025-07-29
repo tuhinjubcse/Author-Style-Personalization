@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Judging Writing Quality and Style Study</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, serif;
+      line-height: 1.6;
+      color: #000;
+    }
+    /* ---------- Blue-bordered welcome section ---------- */
+    .study-container {
+      border: 3px solid #0047AB;
+      margin: 20px;
+      padding: 20px;
+    }
+    .study-header {
+      background-color: #0047AB;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      margin: -20px -20px 20px -20px;
+    }
+    .study-header h1 {
+      margin: 0;
+      font-size: 1.5em;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-top: 1em;
+    }
+
+    /* ---------- UI images section ---------- */
+    .ui-images {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .ui-images img {
+      max-width: 45%;
+      height: auto;
+      border: 1px solid #ccc;
+    }
+
+    /* ---------- Consent form section ---------- */
+    .consent-container {
+      margin: 20px;
+      padding: 20px;
+    }
+    .consent-container p {
+      margin: 0.8em 0;
+    }
+    .consent-options {
+      margin-top: 20px;
+    }
+    .consent-options label {
+      margin-right: 20px;
+      cursor: pointer;
+    }
+    .consent-options input {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Welcome / Intro screen -->
+  <div class="study-container">
+    <div class="study-header">
+      <h1>Welcome to Study on Judging Writing Quality and Style</h1>
+    </div>
+
+    <p><strong>Principal Investigator:</strong> Paramveer Dhillon (dhillonp@umich.edu); Tuhin Chakrabarty (tuhin.chakr@cs.columbia.edu)</p>
+
+    <p>You are invited to participate in a research study on evaluating quality and style/voice in creative writing. We aim to understand what makes a human prefer one excerpt of writing over the other. As a participant, you’ll see two excerpts (Paragraph 1 and Paragraph 2) for (Quality) and three excerpts (Original, Paragraph 1 and Paragraph 2) for style. Each excerpt is 200-400 words.</p>
+
+    <p>For Quality we ask you which paragraph is better in terms of writing quality. We need you to take into account coherence (how well ideas flow together), fluency (natural and smooth writing), and effectiveness (how well it achieves its goals).</p>
+
+    <p>For Style we ask you which paragraph is better in terms of preserving the style/voice of the Original paragraph. We need you to take into account diction (word choice), tone (logical or emotional, intimate or distant, serious or humorous), and syntax/structure/flow (length of sentences, dialogue or monologue).</p>
+
+    <p>You are also required to give reasons for why you choose Paragraph 1 over 2 or 2 over 1. When giving reasons for Quality or Style you must choose phrases from input paragraphs to explain your answer. See the images</p>
+
+    <p style="color:red"><strong>USE OF AI IS STRICTLY PROHIBITED. WE WILL KNOW IF YOU USED AI AND WILL CANCEL THE OUTPUT.</strong></p>
+
+    <p>If you agree to be part of the research study, you will be asked to read and sign (by clicking the "I consent" button) the consent form. After submitting the consent form, you will receive a screen. Each writing task will contain 20 examples: 10 quality judgments, followed by 10 style judgments. Throughout this task, you should refrain from multitasking, i.e., checking your phone, email, or the Internet. We expect it will take 5-6 minutes to read per example pair and write a reason explaining your preference.</p>
+
+    <p class="section-title">Compensation:</p>
+    <p>You will be compensated $25.00 as a base rate for participating in this study. Based on the quality of your written texts, you can earn additional compensation. If we believe the quality of your reasons are good and explained well, we will compensate an additional $5.</p></div>
+  <!-- UI preview images -->
+  <div class="ui-images">
+    <img src="{{ url_for('static', filename='images/quality.png') }}" alt="Quality Evaluation UI" />
+    <img src="{{ url_for('static', filename='images/style.png') }}" alt="Style Evaluation UI" />
+  </div>
+
+  <!-- Consent form screen -->
+  <form action="{{ url_for('consent') }}" method="post">
+    <div class="consent-container">
+      <p>The task is designed in a way that it requires your concentration and ability to do close reading. This study aims to understand what makes people prefer one text over the other.</p>
+
+      <p class="section-title">Benefits of the research:</p>
+      <p>While there may not be any immediate personal benefits for participants, their involvement will greatly aid the research team and the wider research community in understanding and developing computational frameworks for writing assessment.</p>
+
+      <p class="section-title">Risks and discomforts:</p>
+      <p>You might experience fatigue. You can pause during the task and continue from where you left off. Also, you can stop participating in the study at any time without any cost to you.</p>
+
+      <p class="section-title">Data security and storage:</p>
+      <p>We will protect the confidentiality of your research records by not using any identifiable information, such as your name or email address, to identify you on any study records. Instead, you will be assigned a unique random identifier. To minimize the risk of a data breach, we store all the content on a password-protected server behind a firewall.</p>
+
+      <p>Participating in this study is entirely voluntary. You must be 18 years or older in order to participate. Even if you decide to participate now, you may change your mind and stop at any time. You may choose to stop participating for any reason and request to delete your profile at any time. If you have questions about this research study, please contact IRB number: "HUM00264127 Approved by the University of Michigan IRB". The Institutional Review Board (IRB) has determined that this study is no more than minimal risk and exempt from ongoing IRB oversight.</p>
+
+      <div class="consent-options">
+        <label><input type="radio" name="consent" value="yes"> I consent</label>
+        <label><input type="radio" name="consent" value="no"> I do not consent</label>
+      </div>
+
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+
+</body>
+</html>
+
