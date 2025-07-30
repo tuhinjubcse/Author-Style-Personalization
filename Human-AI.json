@@ -16,33 +16,44 @@
         "MFA_pangram": {
             "Benjamin": {
                 "ai_likelihood": 1.655684577094184e-06,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["in leaping and striving for these dreams", "lose sight of the path", "the path that had been carved for us", "harsh return", "draw near", "long after"]
+      
             },
             "Devanshi": {
                 "ai_likelihood": 1.4702479044596355e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["fall silent around me", "consumed by the anxiety", "like a proud father", "warmth of that embrace"]
+
             },
             "James_Cato": {
                 "ai_likelihood": 1.2020270029703777e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["felt my fears realized", "searched for a hint", "All my anxieties melted", "pulling me close to his chest", "felt his pride", "It is this memory I cling to"]
+
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["trembling hands", "bearing the weight of", "wandered the streets", "like a guilty man", "worried skepticism", "dangerous games", "curious silence", "solitary life", "dust particles dance in the afternoon light", "heavy curtains", "spoke volumes", "language of unspoken emotions", "broke our emotional silence", "echo through the decades", "hung between us", "yellowing with age", "running my fingers along the spines", "feeling the weight of his absence", "enduring power"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["poured my heart and soul into", "rich tapestry", "gnawed at my soul", "quiet strength", "steady hand on my shoulder", "navigated the treacherous waters", "thick with unspoken emotions", "etched into the deepest recesses of my mind", "litter the path", "echo of his words continues to resonate within me", "enduring power", "transformative potential"]
             },
             "GPT4": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["encased in amber", "the weight of the manuscript", "the gravity of the step", "the flickering flame of my aspirations", "heavy with the unspoken weight", "passed a verdict", "linger like a ghost in the room", "shaping the contours", "stands as a monument", "a beacon amidst the ever-shifting uncertainties"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 0.00010516908433702258,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["wavering between", "searched for clues", "stood across from each other", "like a true man of his generation", "his supposition has come true"]
+
             }
         }
     },
@@ -64,29 +75,35 @@
         "MFA_pangram": {
             "Yen": {
                 "ai_likelihood": 9.07315148247613e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["the last thing on my mind", "no end of amusement", "dwindled to", "at last", "from then", "look him up", "in vogue"]
             },
             "Rachael": {
                 "ai_likelihood": 2.1557013193766277e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["made my eyes bug"]
             },
             "Sophia": {
                 "ai_likelihood": 0.003119574652777778,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["locked me into his calendar", "our paths ran perpendicular again", "going steady", "suspended in self-imposed monkhood", "It's the least I can do"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["failed to touch him", "spoke of carefully maintained routines", "without fail", "with an air of weary dignity", "carefully blank expression", "run deeper than affection", "precisely on time"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["the kind of place with heavy silverware and hushed conversations", "scrimped and saved", "for the sake of appearances", "filling the silences", "family duty", "the clean-cut boy"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": [ "smiled and carried on", "like the first crop of sweet corn",  "relentless hum of cicadas", "figure shrouded in distant nostalgia", "rehearsed sincerity", "couldn't shake the feeling", "filled the silences", "quiet resolve"]
             }
         }
     },
@@ -108,33 +125,41 @@
         "MFA_pangram": {
             "Sophia": {
                 "ai_likelihood": 0.0005939271714952257,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["in every sense of the word", "keep our eyes closed until it was over"]
             },
             "Brianna": {
                 "ai_likelihood": 8.742014567057293e-06,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["smart-mouthed", "take me in his arms", "run me to freedom", "rain of holy fire"]
+
             },
             "Celeste": {
                 "ai_likelihood": 0.0003496805826822917,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["writhing serpents", "gaze into the distance", "soft and supple skin", "cradled in their arms like babies", "deafening and definitive crack of the gunshot"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["Always watched, but never truly seen", "symbols of their petty authority", "muscle memory", "The routine grinds on", "nothing compared to the chill that's settled in our bones", "distant and unreachable as the stars"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["like a phantom limb", "locked away in the depths", "gilded cage", "hawk-like eyes", "settled deep within our bones", "cogs in a machine", "beneath the surface", "a spark of rebellion flickers", "beyond these walls", "in the dead of night", "a world ablaze with color", "laughter rings out like music", "worth fighting for", "worth dying for", "with bated breath", "the chains will break", "emerge from the shadows", "like butterflies from their chrysalises", "embrace the future"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["brittle, like dried leaves crushed underfoot", "drills into the skull", "twin statues of discipline", "carved from the same cold stone", "shadows on the edge of vision", "extensions of their bodies", "shame and thrill mingling", "sharp her gaze", "like cattle awaiting slaughter", "stripped of agency", "the institutional perfume of despair", "a promise just out of reach"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 0.0005231963263617621,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["constantly being watched", "objects of fear", "familiarity dulled", "There was nothing we wouldn't give"]
             }
         }
     },
@@ -156,33 +181,40 @@
         "MFA_pangram": {
             "Celeste": {
                 "ai_likelihood": 0.00430848863389757,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["the corner of his mouth betrayed the hint of a smile", "People can change each other", "looking at the future"]
             },
             "Renne_Flory": {
                 "ai_likelihood": 0.009757147894965278,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["Remember how different we were when we first met", "depths of real connection", "shaped my life", "You were the first person to really see me"]
             },
             "Devin": {
                 "ai_likelihood": 5.761782328287761e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["things change", "we can't control what will happen in the future", "things may never be the same", "a small price to pay"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["hangs between them", "fingers absently tracing", "grown together", "feeding off each other", "The irony doesn't escape her", "whispered conversations", "made strangers feel seen", "People change each other", "weather systems colliding", "seems like a character in someone else's story"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["the weight of their unspoken feelings hanging heavy in the air", "reached a crossroads", "his eyes hold a flicker of uncertainty", "grappling with his own internal turmoil", "the silence stretches on", "breaks the silence", "her voice barely a whisper", "searching for answers", "his voice laced with regret", "her heart sinking", "growing apart", "their paths are diverging", "relationships ebb and flow", "bound them together", "part ways", "one last lingering glance", "their hearts heavy but their spirits unbroken", "carry a piece of each other within them", "the love that once bloomed between them"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["his voice catching somewhere in his throat", "I wouldn't have anything without you", "chest tighten", "fit together", "softened each other's sharp edges", "pulled her back from the darker edges", "jaw tense", "close the distance", "the space heavy with", "bring themselves to say", "Life would go on"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 0.4975043402777778,
-                "prediction": "Possibly AI"
+                "prediction": "Possibly AI",
+                "cliches": ["Without you I would be nothing", "I would just be a shadow walking around", "the happiest time of her life", "I'll always be here"]
             }
         }
     },
@@ -204,33 +236,41 @@
         "MFA_pangram": {
             "James_Cato": {
                 "ai_likelihood": 5.2783224317762586e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["lost, for a moment, in imagining", "glowed like the sun", "in his own way"]
             },
             "Devin": {
                 "ai_likelihood": 0.0007608201768663195,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["trappings of wealth", "written all over my face"]
             },
             "Yen": {
                 "ai_likelihood": 1.4901161193847656e-06,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["looked us up and down", "ear to ear", "growing red"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["studied indifference", "casual elegance", "summer-bronzed skin", "crisp white blouse", "natural grace", "well-dressed and at ease", "arranged with careful precision", "ate in silence", "accumulated weight of a lifetime", "cheap seats"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["reluctant dance", "effortless confidence", "light and carefree", "whisper from another world", "gaze drifted", "microcosm of society", "laid bare", "invisible lines"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["utterly at home", "the lines on his face deepened", "bore the brunt of", "reeked of disdain", "the line between us and them", "etched into"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 0.0009806950887044272,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["For the first time", "Deep down"]
+
             }
         }
     },
@@ -252,33 +292,40 @@
         "MFA_pangram": {
             "Connor": {
                 "ai_likelihood": 5.1657358805338544e-06,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["her fire turned to smoke", "sparkling blue eyes", "face our last moment", "death didn't wait for anyone"]
             },
             "Hank": {
                 "ai_likelihood": 7.9141722785102e-06,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["blue as the sky", "snuff out the inner fire", "Sunlight danced", "shattered sparks and roaring flame", "Twin flames burning low", "She was a hero. She was a fighter. She was the strongest woman I've known.", "slipped away"]
             },
             "Sophia": {
                 "ai_likelihood": 0.0021065606011284725,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["fading life was a fire flickering down to smoke", "only last as long as there was something to burn", "quiet heroism", "final test"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["made my chest ache", "slow and inevitable", "broke my heart", "close my eyes and see", "refusing to surrender", "until the very end", "accept their fate"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["winter's icy grip", "dazzling display", "somewhere between here and there", "clung to her like a shroud", "flickering like a candle flame", "gathering darkness", "written in the language of the heart", "even as the last embers of her life faded away"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["suspended between this life and the next", "there but not there", "dying like a fire slowly extinguishing into smoke", "winking out one by one", "slipped from her grasp", "etched in me forever"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 0.00011682510375976562,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["Bluer than the sky", "balls of fire", "blazed at me"]
             }
         }
     },
@@ -300,33 +347,40 @@
         "MFA_pangram": {
             "Rachael": {
                 "ai_likelihood": 0.019480387369791668,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["rising like heat shimmers", "one final push", "gathered in clumps like swarms of ants", "bound by strings of fate", "as sure as the sun's journey across the sky", "sank into their chairs", "two mirrors reflecting back at each other", "Nothing in the world could", "twin smiles stretched slowly across their faces"]
             },
             "Adesuwa_Agbonile": {
                 "ai_likelihood": 2.8908252716064453e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["that veil that separates dream from reality", "stirred something in both of them"]
             },
             "Hank": {
                 "ai_likelihood": 0.0015587276882595487,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["cast away by fate"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["stood like a tired sentinel", "predictable as the tide", "invisible threads of fate", "no spring chicken", "floated across the neighborhood like a ghost's lament", "thick with stories", "heat rose from the streets like a malevolent spirit", "seen it all before", "distinctly unimpressed", "mirror images of each other", "caught in two different moments of time", "two aspects of the same soul", "divided at birth", "inevitable reunion", "like two drops of water on a window pane", "drawn together by forces beyond their comprehension or control"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["fiery grip", "snaked through the streets", "as if bound by an invisible thread", "eyes fluttering open", "stark contrast", "frenetic energy", "buzzed with anticipation", "chorus of excitement", "remained unfazed", "sanctuary of quietude", "amidst the chaos", "mirroring the turmoil within his own soul", "eyes fixed on the horizon", "lost in a reverie", "mind's eye"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["stirred awake", "alive with the sounds", "chaotic symphony", "bound together by the invisible threads", "heady aroma", "danced on the edge", "mischievous wink from the heavens", "a rhythm only he could hear", "fits and bursts", "untroubled by time", "bore witness to it all"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 2.6524066925048828e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["slipping their moorings", "deep in laughter", "mysterious machinery of fate", "slow dance"]
             }
         }
     },
@@ -347,29 +401,35 @@
         "MFA_pangram": {
             "Stefan": {
                 "ai_likelihood": 0.008527967664930556,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["at the mercy of", "as their nature demanded", "moved on to larger things", "last resort"]
             },
             "Yash_Tumbak": {
                 "ai_likelihood": 0.0010659959581163195,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["wore it well", "grim silence", "rattle of ice in a tumbler", "settled into ruin"]
             },
             "Renne_Flory": {
                 "ai_likelihood": 0.0002720620897081163,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["transports visitors to another time", "speak in whispers", "shell of itself"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["colonial dream", "seeping through the cracks", "threatened to swallow"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["stark reminder", "remnants of a bygone era", "ghost of its former self", "bore the scars of neglect", "testament to", "swept away", "leaving behind a void", "where the past and the present collided"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["bore the weight of its past", "crumbling façade", "whisper of colonial nostalgia lingered", "like a shadow over", "stood as a relic", "washed away", "bruised sky", "under the weight of history", "leaving behind only silence and the memory of what had been"]
             }
         }
     },
@@ -391,33 +451,40 @@
         "MFA_pangram": {
             "Devanshi": {
                 "ai_likelihood": 0.009095933702256944,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["like a string being pulled from both ends"]
             },
             "Yash_Tumbak": {
                 "ai_likelihood": 2.317958407931858e-06,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["crisp hundred-dollar bills", "talking over each other", "hammered out the details", "it struck me", "crumpled immediately", "nodded his head gravely"]
             },
             "James_Cato": {
                 "ai_likelihood": 2.526574664645725e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["knitted their brows", "as if painted on her face", "became his world", "making him young again", "olive branch"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["mirror images", "shoulders slump", "fairy tale", "last breath", "fleeting glance", "performing our roles", "keeper of memories", "too many ghosts"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["clinging to him like a second skin", "rolling off his tongue", "tasted like ash", "sharp and cutting", "lower lip trembled", "dark eyes pools of confusion", "ghost that lingered", "sea of neon", "keeper of memories", "love lost", "gulf that could not be bridged", "relentless march of time"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["avoiding my gaze", "fumbled for words", "The lie felt hollow", "whispered in hurried tones", "caught between loyalties", "winter sun broke through"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 6.814797719319662e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["crisp hundred-dollar bills", "The truth was", "in my eyes", "honor my mother's memory", "by extension"]
             }
         }
     },
@@ -439,33 +506,40 @@
         "MFA_pangram": {
             "James_Braun": {
                 "ai_likelihood": 0.0003724628024631077,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["windswept field", "the tears that come"]
             },
             "Caroline_Waring": {
                 "ai_likelihood": 0.00035444895426432293,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["tears falling down my face", "beyond the horizon"]
             },
             "Harry": {
                 "ai_likelihood": 2.2616651323106555e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["Tears welled in my eyes", "without looking back", "Life must go on"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["let slip away", "tears sliding down my cheeks", "There were things to be done", "get on with them"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["The wind whipped around me", "tearing at my clothes", "stretched out like an endless ribbon","vast canvas", "mirrored the turmoil within my own heart", "relentless tide of time", "weave its way into the fabric of my reality", "The road ahead stretched out before me", "path that I would travel alone", "newfound sense of peace", "life, in all its complexity and beauty, would go on"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["danced and swirled", "lost to time", "washed ashore", "eroded by time", "promises broken", "beyond my reach", "through the haze", "far horizon", "For one brief, aching moment", "caught myself", "breath halting in my throat", "Tears welled", "held my composure"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 7.841322157118056e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["for all the world like", "tears welling up", "went on with my life"]
             }
         }
     },
@@ -487,33 +561,40 @@
         "MFA_pangram": {
             "Stefan": {
                 "ai_likelihood": 0.00036398569742838543,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["join the ranks", "warring sides of myself", "go back where we came from", "walk away from them", "all in one gulp"]
             },
             "Rachael": {
                 "ai_likelihood": 1.341104507446289e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["cosmic joke","grow into strangers", "all the right reasons", "no one knows how to love", "desperate to get the words out"]
             },
             "Celeste": {
                 "ai_likelihood": 0.6191406249999999,
-                "prediction": "Likely AI"
+                "prediction": "Likely AI",
+                "cliches": ["It serves you right", "if he could see me now", "stayed put", "shook her head", "all our lives", "I don't know what I believe anymore", "What does it matter"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["worst nightmare", "see through it", "racing ahead", "carried by the momentum", "seen it many times before", "spat the word", "life sentence"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["stepping stone", "neither here nor there", "sucks you in, chews you up, and spits you out", "fit their mold", "torn from your home", "stranger in a strange land"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["gathering his thoughts", "like a man recalling a half-forgotten dream", "before you know it", "splits you down the middle", "where do I belong?"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 0.003291236029730903,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["life's dealt some rather unkind cards", "one road to be taken", "To hell with it", "belly of the beast", "far too late to go back"]
             }
         }
     },
@@ -534,29 +615,35 @@
         "MFA_pangram": {
             "Benjamin": {
                 "ai_likelihood": 1.3079908159044055e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["blank canvas", "bathed in the moon's white glow", "breadcrumbs of life", "struck by an intense nostalgia", "arm's length away"]
             },
             "Caroline_Porter": {
                 "ai_likelihood": 7.28501213921441e-07,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["under the full moon", "life will never get better than this", "shot her through with pure happiness", "loping around like an untrained dog"]
             },
             "Lara_Wass": {
                 "ai_likelihood": 2.6325384775797527e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["put that something into words", "melancholy in the air"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["familiar heaviness in the chest", "living and breathing", "dressed in the clothes of remembrance", "uninvited guest at a funeral", "pride ourselves on", "anarchic democracy of our feelings","carefully arranged furniture of our convictions", "come and go as they please"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["a wave of nostalgia", "washed over her", "a wound that had never fully healed", "a flicker of happiness", "as unexpected as a summer storm", "a wave of fear", "refused to be tamed", "uncharted territories of the heart", "uninvited guests who barged in", "defied reason", "free spirits", "danced to their own tune"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["kaleidoscope of emotions", "dancing behind her eyes", "sharp and bittersweet", "like a shadow across the moonlight", "delicate thread", "fragile beauty", "wild, untamed creatures"]
             }
         }
     },
@@ -578,33 +665,40 @@
         "MFA_pangram": {
             "James_Braun": {
                 "ai_likelihood": 1.566277609931098e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["innocent at first", "washed away"]
             },
             "Sophia": {
                 "ai_likelihood": 0.011817084418402778,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["all the pastas under the sun", "strangers to each other", "Before I knew it", "stretched on and on", "end in sight"]
             },
             "Benjamin": {
                 "ai_likelihood": 0.0006834665934244792,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["deep ritual", "No matter how hard I scrubbed"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["ticked with the precision of a heartbeat", "creating a barrier between my spaghetti sanctuary and the outside world", "writing poetry at midnight", "whisper ancient mysteries", "tasted of distant memories", "couldn't tell where the cooking ended and I began"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["treasure trove", "cooked to perfection", "passage of time", "fragrant symphony", "testament to my dedication", "simple things in life", "spaghetti was the star", "the center around which my culinary world revolved", "supporting players", "testament to my love affair", "love affair with this humble dish", "humble dish"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["core of my existence", "shaped my days", "distant summers", "if I turned my back even for a second", "warm embrace", "filling the cracks", "bled into the next"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 5.39753172132704e-06,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["tantalizing aroma", "each and every time", "rattle and groan under the load"]
             }
         }
     },
@@ -626,33 +720,40 @@
         "MFA_pangram": {
             "Devin": {
                 "ai_likelihood": 6.291601392957899e-07,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["waves of pain", "desperate plea", "fleeting moment", "frozen in grief"]
             },
             "Rachael": {
                 "ai_likelihood": 0.02490573459201389,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["biting cold", "whispering in her ears", "shaking hands", "resounding no", "precious few moments", "deaf god", "slipped away", "statue of grief"]
             },
             "Devanshi": {
                 "ai_likelihood": 0.27058919270833337,
-                "prediction": "Possibly AI"
+                "prediction": "Possibly AI",
+                "cliches": ["Gripped by fear", "fleeting moment"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["like a blade of ice", "trembling hands", "so light it could have been made of paper", "shadow of hope", "cold crept up through her body", "like rising water", "essence of winter", "that place beyond reaching"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["life and death", "ragged breaths", "desperate prayer", "battlefield of sweat and tears", "trembling hands", "filled the silence", "fleeting spark", "vast emptiness", "swallowed by the shadows", "lifeless body", "cold stillness", "relentless march", "silent tragedy", "cold and unforgiving", "seeped into her bones", "icy grip of grief", "threatened to consume her"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["thick with silence", "last prayers of the desperate", "trembling hands", "dulled by time", "pale and drawn", "ripped through her body like a jagged knife", "primal and raw", "fragile divide between life and death", "carried the weight of her being", "a candle flickering in a relentless wind", "settled over her like a shroud", "the world outside ceased to exist"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 3.046459621853299e-06,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["Trembling with fear"]
             }
         }
     },
@@ -673,29 +774,35 @@
         "MFA_pangram": {
             "Renne_Flory": {
                 "ai_likelihood": 2.4437904357910156e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["milky skin"]
             },
             "James_Cato": {
                 "ai_likelihood": 2.682209014892578e-06,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["my eyes landed on", "most striking woman I'd ever seen", "with the grace of a lioness"]
             },
             "Devin": {
                 "ai_likelihood": 0.0007761849297417535,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["exotic and striking in her beauty", "stood frozen", "timeless features", "glowed with youth", "clear as a glacial lake", "as though in a trance", "moved in grace like a lioness", "as fleeting as it was alluring", "pensive and dreamy mood", "eyes shone so brightly"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["emerge from the December mist of of Charles de Gaulle like an apparition", "moved through Terminal 2F with the deliberate grace of a lioness", "eyes, set like amber stones", "had lived a thousand years", "witnessed the rise and fall of civilizations", "fate, with its peculiar sense of humor", "I might have followed her forever", "my head still swimming with visions"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["in the heart of", "winter raged", "timeless beauty", "skin kissed by the sun", "pools of liquid obsidian", "grace of a lioness", "bustling crowd", "whispered of", "forgotten civilizations", "fleeting moment", "apparition from a forgotten era", "modern temple", "stark contrast", "hurried, harried", "scurried around", "oasis of exoticism", "desert of steel and glass", "gaze drifted", "enigmatic woman", "vanished into the crowd", "lingering scent", "sense of profound wonder", "causing a commotion", "eyes twinkling", "echoed in my mind", "in the realm of", "the extraordinary often lies hidden in the ordinary", "waiting to be discovered"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["time had halted", "neither of this world nor any other", "moved with the languid elegance of a lioness"]
             }
         }
     },
@@ -717,33 +824,40 @@
         "MFA_pangram": {
             "Celeste": {
                 "ai_likelihood": 0.011867947048611112,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": [ "unforgiving clutch", "in his final moments", "unspeakably miserable","tender and sorrowful", "desperate longing", "tragic nature of their lives","a happy ending"]
             },
             "Sophia": {
                 "ai_likelihood": 0.00022424591912163628,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["tragic fate", "terrible wrong", "slowly dwindled", "approaching this all wrong", "ugly truth", "love stayed unfulfilled"] 
             },
             "Rachael": {
                 "ai_likelihood": 1.2252065870496963e-06,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["here and now", "prove my point", "know for certain"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["Truth sits heavily in my hands", "pages yellow and brittle with time", "fade into septicemic darkness", "scattered like ash", "war-torn continent", "harsh reality", "unflinching record", "the shadow of my betrayal", "tore them apart", "haunts me", "from the ashes", "the weight of what I did", "preserved in amber"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["etched in my memory", "countless times", "twilight of my life", "stark reality", "tragically cut short", "testament to", "defy fate", "relentless march of time", "shadows lengthen", "tapestry of hope", "forever young, forever in love", "echo in my mind", "age-old dilemma", "truth, like beauty, lies in the eye of the beholder", "harsh reality", "tragic fate"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["In the twilight of her long life", "grappled with the burden", "too cruel to bear", "loomed like the specter", "specter of her own guilt", "architect of their suffering", "gnawed at her sense of justice", "fragile hope", "ink dried on her final pages", "echo of a question", "brutal finality", "the balm of a beautiful lie", "At the edge of her fading strength", "allowed herself the faintest smile"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 0.004976060655381945,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["behind bars", "close my eyes and sleep"]
             }
         }
     },
@@ -765,33 +879,40 @@
         "MFA_pangram": {
             "Cara": {
                 "ai_likelihood": 0.00017748938666449653,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["as if it were yesterday", "toiling in obscurity", "consolidated his base", "troubling rise to power"]
             },
             "Mariah Kreutter": {
                 "ai_likelihood": 0.009926689995659722,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["on the run", "of all people", "kept his head down", "His stomach turned"]
             },
             "Adesuwa_Agbonile": {
                 "ai_likelihood": 1.2914339701334636e-06,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["ghost had made an appearance", "worst kind you could be", "masses would flock", "No going back", "kicked open the door"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["A guy could become somebody", "Made the last one look like", "that old familiar", "Here-We-Go-Again", "Time to make history"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 0.044487847222222224,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["This is it", "grappling with his conscience", "cold sweats", "taking out the bad guy", "step into the light", "did what he had to do", "Like nothing had happened"]
             },
             "GPT4o": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["wheezing relic", "bail out of his chest", "What have you done?", "left its hooks in you", "breathe easy", "wide-eyed", "slack-jawed", "The world had gone on", "shiny teeth", "lead the charge", "the real death", "cold air a slap", "Time to go"]
             },
             "GPT4_Finetuned": {
                 "ai_likelihood": 0.0011380513509114585,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["paid the price", "handed the torch", "at this late date"]
             }
         }
     },
@@ -813,25 +934,30 @@
         "MFA_pangram": {
             "Sara": {
                 "ai_likelihood": 6.490283542209202e-05,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["his eyes filled with something I recognized", "Night fell"]
             },
             "James_Braun": {
                 "ai_likelihood": 0.1589626736111111,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["turning point", "had come to this", "how proud he was of me", "couldn't even come close"]
             },
             "Sophia": {
                 "ai_likelihood": 8.013513353135851e-06,
-                "prediction": "Unlikely AI"
+                "prediction": "Unlikely AI",
+                "cliches": ["Everything that would follow in the years to come", "such a nice day"]
             }
         },
         "AI_pangram": {
             "Claude3.5Sonnet": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["quickly fills the silence", "pulls me aside", "like fallen leaves", "the growing distance between"]
             },
             "Gemini_1.5_Pro": {
                 "ai_likelihood": 1.0,
-                "prediction": "Highly Likely AI"
+                "prediction": "Highly Likely AI",
+                "cliches": ["a stranger in his own house", "a shadow of the man I knew", "once bright and full of life", "clouded with confusion", "etched with worry", "A flicker of recognition", "a brief spark in the fading embers of his mind", "a ghost of a smile", "fragile whisper", "The light fades", "vacant stare", "lost in the labyrinth of his own thoughts", "The silence that follows is heavy", "filled with unspoken words", "young and vibrant", "radiating joy", "voice cracks", "laced with a quiet despair", "filled with tears", "frozen in time", "stark contrast", "frail figure", "The weight of his absence, even in his presence", "settles over me", "a heavy cloak of sorrow", "cannot shake off"]
             },
             "GPT4o": {
                 "ai_likelihood": 0.79248046875,
