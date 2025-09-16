@@ -42,7 +42,7 @@ This repository accompanies the study “Readers Prefer Outputs of AI Trained on
 
 ## Reproducing the Analyses
 
-This repository does **not** contain the full statistical modelling code from the paper. The `StatAnalysis/` directory, however, includes scripts to recreate Figures 2–4. To reproduce these figures:
+This repository contains the full statistical modelling code from the paper. The `StatAnalysis/` directory, includes scripts to recreate Figures 2–4. To reproduce these figures:
 
 1. Run the R scripts in order:
    ```bash
