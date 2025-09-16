@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Figure</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        svg {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1300" height="750" viewBox="0 0 1300 750">
+          <!-- Panel A: Stylometrics - Fixed viewBox scaling -->
+          <svg x="-40" y="0" width="750" height="400" viewBox="0 0 1000 400" preserveAspectRatio="xMinYMin meet">
+            <defs>
+              <style>
+                .main-title { font-family: Helvetica, Arial, sans-serif; font-size: 22px; fill: #2c3e50; text-anchor: middle; }
+                .subtitle { font-family: Helvetica, Arial, sans-serif; font-size: 16px; fill: #7f8c8d; text-anchor: middle; }
+                .axis-label { font-family: Helvetica, Arial, sans-serif; font-size: 18px; fill: #2c3e50; text-anchor: middle; }
+                .tick-label { font-family: Helvetica, Arial, sans-serif; font-size: 14px; fill: #34495e; text-anchor: middle; }
+                .feature-label { font-family: Helvetica, Arial, sans-serif; font-size: 14px; fill: #2c3e50; font-weight: 500; text-anchor: end; }
+                .legend { font-family: Helvetica, Arial, sans-serif; font-size: 14px; fill: #34495e; }
+                .zero-line { stroke: #95a5a6; stroke-width: 1; stroke-dasharray: 3,3; }
+                .few-shot { fill: #c0392b; }
+                .fine-tuned { fill: #1e8449; }
+                .few-shot-stroke { stroke: #c0392b; stroke-width: 2; stroke-linecap: round; }
+                .fine-tuned-stroke { stroke: #1e8449; stroke-width: 2; stroke-linecap: round; }
+                .confidence-interval { stroke-width: 2; stroke-linecap: round; }
+                .point { stroke: white; stroke-width: 1.5; }
+              </style>
+            </defs>
+            
+            <!-- Background -->
+            <rect width="1000" height="400" fill="white"/>
+            
+            <!-- Title and subtitles -->
+            <text x="400" y="70" class="main-title">Stylometric predictors of AI detector score</text>
+            <text x="400" y="90" class="subtitle">Top mediating feature: Cliché density explains</text>
+            <text x="400" y="110" class="subtitle">16% (Few-shot) and 1% (Fine-tuned) of human preference</text>
+            
+            <!-- Main chart area -->
+            <g transform="translate(200, 120)">
+              <!-- Grid lines (light gray) -->
+              <g stroke="#e8e8e8" stroke-width="0.5" opacity="0.5">
+                <line x1="0" y1="0" x2="0" y2="180"/>     <!-- -2 -->
+                <line x1="40" y1="0" x2="40" y2="180"/>   <!-- -1 -->
+                <line x1="80" y1="0" x2="80" y2="180"/>   <!-- 0 -->
+                <line x1="120" y1="0" x2="120" y2="180"/> <!-- 1 -->
+                <line x1="160" y1="0" x2="160" y2="180"/> <!-- 2 -->
+                <line x1="200" y1="0" x2="200" y2="180"/> <!-- 3 -->
+                <line x1="240" y1="0" x2="240" y2="180"/> <!-- 4 -->
+                <line x1="280" y1="0" x2="280" y2="180"/> <!-- 5 -->
+                <line x1="320" y1="0" x2="320" y2="180"/> <!-- 6 -->
+                <line x1="360" y1="0" x2="360" y2="180"/> <!-- 7 -->
+                <line x1="400" y1="0" x2="400" y2="180"/> <!-- 8 -->
+              </g>
+              
+              <!-- Zero line -->
+              <line x1="80" y1="0" x2="80" y2="180" class="zero-line"/>
+              
+              <!-- Y-axis -->
+              <line x1="0" y1="0" x2="0" y2="180" stroke="black" stroke-width="1"/>
+              
+              <!-- Feature: Cliché density -->
+              <g transform="translate(0, 30)">
+                <!-- Few-shot: estimate=6.589, conf_low=5.454, conf_high=7.725 -->
+                <!-- Confidence interval -->
+                <line x1="298" y1="-5" x2="389" y2="-5" class="confidence-interval few-shot-stroke"/>
+                <line x1="298" y1="-8" x2="298" y2="-2" class="confidence-interval few-shot-stroke"/>
+                <line x1="389" y1="-8" x2="389" y2="-2" class="confidence-interval few-shot-stroke"/>
+                <!-- Point -->
+                <circle cx="344" cy="-5" r="4" class="point few-shot"/>
+                
+                <!-- Fine-tuned: estimate=1.056, conf_low=-0.640, conf_high=2.752 -->
+                <!-- Confidence interval -->
+                <line x1="54" y1="5" x2="190" y2="5" class="confidence-interval fine-tuned-stroke"/>
+                <line x1="54" y1="2" x2="54" y2="8" class="confidence-interval fine-tuned-stroke"/>
+                <line x1="190" y1="2" x2="190" y2="8" class="confidence-interval fine-tuned-stroke"/>
+                <!-- Point -->
+                <circle cx="122" cy="5" r="4" class="point fine-tuned"/>
+              </g>
+              
+              <!-- Feature: Reading difficulty -->
+              <g transform="translate(0, 90)">
+                <!-- Few-shot: estimate=2.549, conf_low=0.623, conf_high=4.475 -->
+                <!-- Confidence interval -->
+                <line x1="105" y1="-5" x2="259" y2="-5" class="confidence-interval few-shot-stroke"/>
+                <line x1="105" y1="-8" x2="105" y2="-2" class="confidence-interval few-shot-stroke"/>
+                <line x1="259" y1="-8" x2="259" y2="-2" class="confidence-interval few-shot-stroke"/>
+                <!-- Point -->
+                <circle cx="182" cy="-5" r="4" class="point few-shot"/>
+                
+                <!-- Fine-tuned: estimate=0.699, conf_low=-0.465, conf_high=1.863 -->
+                <!-- Confidence interval -->
+                <line x1="61" y1="5" x2="155" y2="5" class="confidence-interval fine-tuned-stroke"/>
+                <line x1="61" y1="2" x2="61" y2="8" class="confidence-interval fine-tuned-stroke"/>
+                <line x1="155" y1="2" x2="155" y2="8" class="confidence-interval fine-tuned-stroke"/>
+                <!-- Point -->
+                <circle cx="108" cy="5" r="4" class="point fine-tuned"/>
+              </g>
+              
+              <!-- Feature: Adjectives (count) -->
+              <g transform="translate(0, 150)">
+                <!-- Few-shot: estimate=1.319, conf_low=0.055, conf_high=2.582 -->
+                <!-- Confidence interval -->
+                <line x1="82" y1="-5" x2="183" y2="-5" class="confidence-interval few-shot-stroke"/>
+                <line x1="82" y1="-8" x2="82" y2="-2" class="confidence-interval few-shot-stroke"/>
+                <line x1="183" y1="-8" x2="183" y2="-2" class="confidence-interval few-shot-stroke"/>
+                <!-- Point -->
+                <circle cx="133" cy="-5" r="4" class="point few-shot"/>
+                
+                <!-- Fine-tuned: estimate=0.454, conf_low=-0.347, conf_high=1.254 -->
+                <!-- Confidence interval -->
+                <line x1="66" y1="5" x2="130" y2="5" class="confidence-interval fine-tuned-stroke"/>
+                <line x1="66" y1="2" x2="66" y2="8" class="confidence-interval fine-tuned-stroke"/>
+                <line x1="130" y1="2" x2="130" y2="8" class="confidence-interval fine-tuned-stroke"/>
+                <!-- Point -->
+                <circle cx="98" cy="5" r="4" class="point fine-tuned"/>
+              </g>
+              
+              <!-- X-axis -->
+              <line x1="0" y1="180" x2="400" y2="180" stroke="black" stroke-width="1"/>
+              
+              <!-- X-axis tick marks -->
+              <g stroke="black" stroke-width="1">
+                <line x1="0" y1="180" x2="0" y2="185"/>     <!-- -2 -->
+                <line x1="40" y1="180" x2="40" y2="185"/>   <!-- -1 -->
+                <line x1="80" y1="180" x2="80" y2="185"/>   <!-- 0 -->
+                <line x1="120" y1="180" x2="120" y2="185"/> <!-- 1 -->
+                <line x1="160" y1="180" x2="160" y2="185"/> <!-- 2 -->
+                <line x1="200" y1="180" x2="200" y2="185"/> <!-- 3 -->
+                <line x1="240" y1="180" x2="240" y2="185"/> <!-- 4 -->
+                <line x1="280" y1="180" x2="280" y2="185"/> <!-- 5 -->
+                <line x1="320" y1="180" x2="320" y2="185"/> <!-- 6 -->
+                <line x1="360" y1="180" x2="360" y2="185"/> <!-- 7 -->
+                <line x1="400" y1="180" x2="400" y2="185"/> <!-- 8 -->
+              </g>
+              
+              <!-- X-axis labels -->
+              <g class="tick-label">
+                <text x="0" y="200">-2</text>
+                <text x="40" y="200">-1</text>
+                <text x="80" y="200">0</text>
+                <text x="120" y="200">1</text>
+                <text x="160" y="200">2</text>
+                <text x="200" y="200">3</text>
+                <text x="240" y="200">4</text>
+                <text x="280" y="200">5</text>
+                <text x="320" y="200">6</text>
+                <text x="360" y="200">7</text>
+                <text x="400" y="200">8</text>
+              </g>
+              
+              <!-- X-axis label -->
+              <text x="200" y="230" class="axis-label">Standardized coefficient (logit scale)</text>
+            </g>
+            
+            <!-- Y-axis labels -->
+            <g class="feature-label">
+              <text x="190" y="155">Cliché density</text>
+              
+              <!-- Multi-line label for Reading difficulty -->
+              <text x="190" y="210">
+                <tspan x="190" dy="0">Reading difficulty</tspan>
+                <tspan x="190" dy="15">(100-Flesch)</tspan>
+              </text>
+              
+              <text x="190" y="275">Adjectives (count)</text>
+            </g>
+            
+            <!-- Legend -->
+            <g transform="translate(470, 280)">
+              <circle cx="0" cy="0" r="4" class="point few-shot"/>
+              <text x="10" y="4" class="legend">Few-shot</text>
+              
+              <circle cx="80" cy="0" r="4" class="point fine-tuned"/>
+              <text x="90" y="4" class="legend">Fine-tuned</text>
+            </g>
+          </svg>
+
+          <!-- Panel C: Cost - Fixed scaling and layout with ROTATED LABELS -->
+          <svg x="-40" y="275" width="600" height="440" preserveAspectRatio="xMinYMin meet">
+            <svg font-family="Helvetica, Arial, sans-serif" viewBox="0 0 1050 780" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Pattern definitions -->
+                  <defs>
+                    <!-- Diagonal hatching pattern for in-context costs -->
+                    <pattern id="hatchPattern" patternUnits="userSpaceOnUse" width="4" height="4">
+                      <rect width="4" height="4" fill="#4d9c4d"/>
+                      <path d="M 0,4 L 4,0" stroke="#2d5a2d" stroke-width="1"/>
+                    </pattern>
+                  </defs>
+                  
+                  <!-- Title -->
+                  <text x="571.429" y="44.133" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#333">Cost of Producing 100,000 words of raw text: Expert Writer vs. AI.</text>
+                  
+                  <!-- Main chart area -->
+                  <g transform="translate(19.048, 59.733)">
+                    
+                    <!-- Grid lines - updated for $300 scale -->
+                    <g stroke="#f5f5f5" stroke-width="0.476">
+                      <line x1="223.810" y1="0.000" x2="223.810" y2="622.933"/>   <!-- $50 -->
+                      <line x1="295.238" y1="0.000" x2="295.238" y2="622.933"/>   <!-- $100 -->
+                      <line x1="366.667" y1="0.000" x2="366.667" y2="622.933"/>   <!-- $150 -->
+                      <line x1="438.095" y1="0.000" x2="438.095" y2="622.933"/>   <!-- $200 -->
+                      <line x1="509.524" y1="0.000" x2="509.524" y2="622.933"/>   <!-- $250 -->
+                      <line x1="580.952" y1="0.000" x2="580.952" y2="622.933"/>   <!-- $300 -->
+                      <line x1="938.095" y1="0.000" x2="938.095" y2="622.933"/>   <!-- $25,000 -->
+                    </g>
+                    
+                    <!-- X-axis tick marks -->
+                    <g stroke="#333" stroke-width="1">
+                      <line x1="152.381" y1="622.933" x2="152.381" y2="631.467"/>   <!-- $0 -->
+                      <line x1="223.810" y1="622.933" x2="223.810" y2="631.467"/>   <!-- $50 -->
+                      <line x1="295.238" y1="622.933" x2="295.238" y2="631.467"/>   <!-- $100 -->
+                      <line x1="366.667" y1="622.933" x2="366.667" y2="631.467"/>   <!-- $150 -->
+                      <line x1="438.095" y1="622.933" x2="438.095" y2="631.467"/>   <!-- $200 -->
+                      <line x1="509.524" y1="622.933" x2="509.524" y2="631.467"/>   <!-- $250 -->
+                      <line x1="580.952" y1="622.933" x2="580.952" y2="631.467"/>   <!-- $300 -->
+                      <line x1="938.095" y1="622.933" x2="938.095" y2="631.467"/>   <!-- $25,000 -->
+                    </g>
+                    
+                    <!-- X-axis with break -->
+                    <g>
+                      <!-- Main x-axis line (to $300) -->
+                      <line x1="152.381" y1="622.933" x2="580.952" y2="622.933" stroke="#333" stroke-width="1.905"/>
+                      
+                      <!-- X-axis break indicator -->
+                      <line x1="585.714" y1="619.520" x2="595.238" y2="626.347" stroke="#333" stroke-width="2.857"/>
+                      <line x1="595.238" y1="619.520" x2="604.762" y2="626.347" stroke="#333" stroke-width="2.857"/>
+                      
+                      <!-- X-axis continuation after break -->
+                      <line x1="609.524" y1="622.933" x2="1009.524" y2="622.933" stroke="#333" stroke-width="1.905"/>
+                    </g>
+                    
+                    <!-- X-axis labels -->
+                    <g fill="#333" font-family="Helvetica, Arial, sans-serif" font-size="18" text-anchor="middle">
+                      <text x="152.381" y="612">$0</text>
+                      <text x="223.810" y="612">$50</text>
+                      <text x="295.238" y="612">$100</text>
+                      <text x="366.667" y="612">$150</text>
+                      <text x="438.095" y="612">$200</text>
+                      <text x="509.524" y="612">$250</text>
+                      <text x="580.952" y="612">$300</text>
+                      <text x="940" y="612">$25,000</text>
+                    </g>
+                    
+                    <!-- Expert bar with simple break -->
+                    <g>
+                      <!-- First part of expert bar (to $300) -->
+                      <rect x="152.381" y="8.533" width="428.571" height="17.067" fill="#d73027" stroke="#333" stroke-width="0.952"/>
+                      
+                      <!-- Expert bar break indicator -->
+                      <line x1="585.714" y1="10.240" x2="595.238" y2="23.893" stroke="#333" stroke-width="2.857"/>
+                      <line x1="595.238" y1="10.240" x2="604.762" y2="23.893" stroke="#333" stroke-width="2.857"/>
+                      
+                      <!-- Second part of expert bar -->
+                      <rect x="609.524" y="8.533" width="328.571" height="17.067" fill="#d73027" stroke="#333" stroke-width="0.952"/>
+                      
+                      <!-- Expert labels - ROTATED -->
+                      <text x="160" y="30" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#333"
+                            transform="rotate(-30, 130, 40)" text-anchor="end">Expert Writer</text>
+                      <text x="852.381" y="45.227" fill="#333" font-weight="5000">$25,000</text>
+                    </g>
+                    
+                    <!-- AI Author stacked bars with ROTATED LABELS -->
+                    <g font-family="Helvetica, Arial, sans-serif" font-size="18">
+                      
+                      <!-- O. Pamuk: $3 in-context + $272.5 fine-tuning = $275.5 total -->
+                      <rect x="152.381" y="34.133" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="34.133" width="389.524" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="58" fill="#333" font-weight="500" transform="rotate(-30, 130, 58)" text-anchor="end">O. Pamuk</text>
+                      <text x="552.381" y="45.227" fill="#333" font-weight="500">$275.50</text>
+                      
+                      <!-- J. Franzen: $3 in-context + $192.5 fine-tuning = $195.5 total -->
+                      <rect x="152.381" y="52.907" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="52.907" width="275.238" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="77" fill="#333" font-weight="500" transform="rotate(-30, 130, 77)" text-anchor="end">J. Franzen</text>
+                      <text x="438.095" y="64.000" fill="#333" font-weight="500">$195.50</text>
+                      
+                      <!-- I. McEwan: $3 in-context + $180.5 fine-tuning = $183.5 total -->
+                      <rect x="152.381" y="71.680" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="71.680" width="258.095" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="96" fill="#333" font-weight="500" transform="rotate(-30, 130, 96)" text-anchor="end">I. McEwan</text>
+                      <text x="420.952" y="82.773" fill="#333" font-weight="500">$183.50</text>
+                      
+                      <!-- M. Robinson: $3 in-context + $172.5 fine-tuning = $175.5 total -->
+                      <rect x="152.381" y="90.453" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="90.453" width="246.667" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="115" fill="#333" font-weight="500" transform="rotate(-30, 130, 115)" text-anchor="end">M. Robinson</text>
+                      <text x="409.524" y="101.547" fill="#333" font-weight="500">$175.50</text>
+                      
+                      <!-- A. Proulx: $3 in-context + $163 fine-tuning = $166 total -->
+                      <rect x="152.381" y="109.227" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="109.227" width="233.333" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="133" fill="#333" font-weight="500" transform="rotate(-30, 130, 133)" text-anchor="end">A. Proulx</text>
+                      <text x="395.238" y="120.320" fill="#333" font-weight="500">$166.00</text>
+                      
+                      <!-- L. Erdrich: $3 in-context + $145.75 fine-tuning = $148.75 total -->
+                      <rect x="152.381" y="128.000" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="128.000" width="207.619" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="152" fill="#333" font-weight="500" transform="rotate(-30, 130, 152)" text-anchor="end">L. Erdrich</text>
+                      <text x="370.476" y="139.093" fill="#333" font-weight="500">$148.75</text>
+                      
+                      <!-- P. Everett: $3 in-context + $133.5 fine-tuning = $136.5 total -->
+                      <rect x="152.381" y="146.773" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="146.773" width="190.476" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="171" fill="#333" font-weight="500" transform="rotate(-30, 130, 171)" text-anchor="end">P. Everett</text>
+                      <text x="353.333" y="157.867" fill="#333" font-weight="500">$136.50</text>
+                      
+                      <!-- S. Rushdie: $3 in-context + $132.5 fine-tuning = $135.5 total -->
+                      <rect x="152.381" y="165.547" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="165.547" width="189.524" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="190" fill="#333" font-weight="500" transform="rotate(-30, 130, 190)" text-anchor="end">S. Rushdie</text>
+                      <text x="352.381" y="176.640" fill="#333" font-weight="500">$135.50</text>
+                      
+                      <!-- C. Whitehead: $3 in-context + $130.25 fine-tuning = $133.25 total -->
+                      <rect x="152.381" y="184.320" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="184.320" width="185.714" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="208" fill="#333" font-weight="500" transform="rotate(-30, 130, 208)" text-anchor="end">C. Whitehead</text>
+                      <text x="348.571" y="195.413" fill="#333" font-weight="500">$133.25</text>
+                      
+                      <!-- K. Ishiguro: $3 in-context + $124.5 fine-tuning = $127.5 total -->
+                      <rect x="152.381" y="203.093" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="203.093" width="178.095" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="227" fill="#333" font-weight="500" transform="rotate(-30, 130, 227)" text-anchor="end">K. Ishiguro</text>
+                      <text x="340.952" y="214.187" fill="#333" font-weight="500">$127.50</text>
+                      
+                      <!-- Z. Smith: $3 in-context + $121.25 fine-tuning = $124.25 total -->
+                      <rect x="152.381" y="221.867" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="221.867" width="174.286" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="246" fill="#333" font-weight="500" transform="rotate(-30, 130, 246)" text-anchor="end">Z. Smith</text>
+                      <text x="337.143" y="232.960" fill="#333" font-weight="500">$124.25</text>
+                      
+                      <!-- H. Murakami: $3 in-context + $116 fine-tuning = $119 total -->
+                      <rect x="152.381" y="240.640" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="240.640" width="165.714" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="265" fill="#333" font-weight="500" transform="rotate(-30, 130, 265)" text-anchor="end">H. Murakami</text>
+                      <text x="328.571" y="251.733" fill="#333" font-weight="500">$119.00</text>
+                      
+                      <!-- M. Atwood: $3 in-context + $113.5 fine-tuning = $116.5 total -->
+                      <rect x="152.381" y="259.413" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="259.413" width="162.857" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="283" fill="#333" font-weight="500" transform="rotate(-30, 130, 283)" text-anchor="end">M. Atwood</text>
+                      <text x="325.714" y="270.507" fill="#333" font-weight="500">$116.50</text>
+                      
+                      <!-- C. Adichie: $3 in-context + $111 fine-tuning = $114 total -->
+                      <rect x="152.381" y="278.187" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="278.187" width="160.000" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="302" fill="#333" font-weight="500" transform="rotate(-30, 130, 302)" text-anchor="end">C. Adichie</text>
+                      <text x="322.857" y="289.280" fill="#333" font-weight="500">$114.00</text>
+                      
+                      <!-- G. Saunders: $3 in-context + $79.25 fine-tuning = $82.25 total -->
+                      <rect x="152.381" y="296.960" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="296.960" width="113.333" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="321" fill="#333" font-weight="500" transform="rotate(-30, 130, 321)" text-anchor="end">G. Saunders</text>
+                      <text x="276.190" y="308.053" fill="#333" font-weight="500">$82.25</text>
+                      
+                      <!-- A. Ernaux: $3 in-context + $76.5 fine-tuning = $79.5 total -->
+                      <rect x="152.381" y="315.733" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="315.733" width="109.524" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="340" fill="#333" font-weight="500" transform="rotate(-30, 130, 340)" text-anchor="end">A. Ernaux</text>
+                      <text x="272.381" y="326.827" fill="#333" font-weight="500">$79.50</text>
+                      
+                      <!-- S. Nunez: $3 in-context + $71 fine-tuning = $74 total -->
+                      <rect x="152.381" y="334.507" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="334.507" width="101.905" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="358" fill="#333" font-weight="500" transform="rotate(-30, 130, 358)" text-anchor="end">S. Nunez</text>
+                      <text x="264.762" y="345.600" fill="#333" font-weight="500">$74.00</text>
+                      
+                      <!-- R. Gay: $3 in-context + $67 fine-tuning = $70 total -->
+                      <rect x="152.381" y="353.280" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="353.280" width="96.190" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="377" fill="#333" font-weight="500" transform="rotate(-30, 130, 377)" text-anchor="end">R. Gay</text>
+                      <text x="259.048" y="364.373" fill="#333" font-weight="500">$70.00</text>
+                      
+                      <!-- J. Lahiri: $3 in-context + $65.75 fine-tuning = $68.75 total -->
+                      <rect x="152.381" y="372.053" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="372.053" width="94.286" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="396" fill="#333" font-weight="500" transform="rotate(-30, 130, 396)" text-anchor="end">J. Lahiri</text>
+                      <text x="247.143" y="383.147" fill="#333" font-weight="500">$68.75</text>
+                      
+                      <!-- M. Lee: $3 in-context + $62.5 fine-tuning = $65.5 total -->
+                      <rect x="152.381" y="390.827" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="390.827" width="89.524" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="415" fill="#333" font-weight="500" transform="rotate(-30, 130, 415)" text-anchor="end">M. Lee</text>
+                      <text x="252.381" y="401.920" fill="#333" font-weight="500">$65.50</text>
+                      
+                      <!-- S. Rooney: $3 in-context + $52.75 fine-tuning = $55.75 total -->
+                      <rect x="152.381" y="409.600" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="409.600" width="75.238" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="433" fill="#333" font-weight="500" transform="rotate(-30, 130, 433)" text-anchor="end">S. Rooney</text>
+                      <text x="238.095" y="420.693" fill="#333" font-weight="500">$55.75</text>
+                      
+                      <!-- C. Strayed: $3 in-context + $52.25 fine-tuning = $55.25 total -->
+                      <rect x="152.381" y="428.373" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="428.373" width="75.238" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="452" fill="#333" font-weight="500" transform="rotate(-30, 130, 452)" text-anchor="end">C. Strayed</text>
+                      <text x="238.095" y="439.467" fill="#333" font-weight="500">$55.25</text>
+                      
+                      <!-- L. Davis: $3 in-context + $50 fine-tuning = $53 total -->
+                      <rect x="152.381" y="447.147" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="447.147" width="71.429" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="471" fill="#333" font-weight="500" transform="rotate(-30, 130, 471)" text-anchor="end">L. Davis</text>
+                      <text x="234.286" y="458.240" fill="#333" font-weight="500">$53.00</text>
+                      
+                      <!-- R. Cusk: $3 in-context + $49.25 fine-tuning = $52.25 total -->
+                      <rect x="152.381" y="465.920" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="465.920" width="70.476" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="490" fill="#333" font-weight="500" transform="rotate(-30, 130, 490)" text-anchor="end">R. Cusk</text>
+                      <text x="233.333" y="477.013" fill="#333" font-weight="500">$52.25</text>
+                      
+                      <!-- B. Lerner: $3 in-context + $45.75 fine-tuning = $48.75 total -->
+                      <rect x="152.381" y="484.693" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="484.693" width="65.714" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="508" fill="#333" font-weight="500" transform="rotate(-30, 130, 508)" text-anchor="end">B. Lerner</text>
+                      <text x="228.571" y="495.787" fill="#333" font-weight="500">$48.75</text>
+                      
+                      <!-- Y. Ogawa: $3 in-context + $43.75 fine-tuning = $46.75 total -->
+                      <rect x="152.381" y="503.467" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="503.467" width="62.857" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="527" fill="#333" font-weight="500" transform="rotate(-30, 130, 527)" text-anchor="end">Y. Ogawa</text>
+                      <text x="225.714" y="514.560" fill="#333" font-weight="500">$46.75</text>
+                      
+                      <!-- O. Moshfegh: $3 in-context + $40.75 fine-tuning = $43.75 total -->
+                      <rect x="152.381" y="522.240" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="522.240" width="59.048" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="546" fill="#333" font-weight="500" transform="rotate(-30, 130, 546)" text-anchor="end">O. Moshfegh</text>
+                      <text x="221.905" y="533.333" fill="#333" font-weight="500">$43.75</text>
+                      
+                      <!-- H. Kang: $3 in-context + $32.75 fine-tuning = $35.75 total -->
+                      <rect x="152.381" y="541.013" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="541.013" width="46.667" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="565" fill="#333" font-weight="500" transform="rotate(-30, 130, 565)" text-anchor="end">H. Kang</text>
+                      <text x="209.524" y="552.107" fill="#333" font-weight="500">$35.75</text>
+                      
+                      <!-- J. Diaz: $3 in-context + $30.25 fine-tuning = $33.25 total -->
+                      <rect x="152.381" y="559.787" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="559.787" width="42.857" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="150" y="584" fill="#333" font-weight="500" transform="rotate(-30, 130, 584)" text-anchor="end">J. Diaz</text>
+                      <text x="205.714" y="570.880" fill="#333" font-weight="500">$33.25</text>
+                      
+                      <!-- T. Tulathimutte: $3 in-context + $22.25 fine-tuning = $25.25 total -->
+                      <rect x="152.381" y="578.560" width="4.286" height="15.360" fill="url(#hatchPattern)" stroke="#333" stroke-width="0.286"/>
+                      <rect x="156.667" y="578.560" width="32.381" height="15.360" fill="#1a5c1a" stroke="#333" stroke-width="0.286"/>
+                      <text x="160" y="602" fill="#333" font-weight="500" transform="rotate(-30, 130, 602)" text-anchor="end">T. Tulathimutte</text>
+                      <text x="195.238" y="589.653" fill="#333" font-weight="500">$25.25</text>
+                    </g>
+                    
+                    <!-- Legend -->
+                    <g transform="translate(647.619, 341.333)">
+                      <text x="-169.048" y="17.067" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#333">AI Approaches:</text>
+                      
+                      <!-- Fine-tuned AI legend -->
+                      <rect x="-169.048" y="29.867" width="17.143" height="12.800" fill="#1a5c1a"/>
+                      <text x="-140.762" y="40.107" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#333">Fine-tuned AI*</text>
+                      
+                      <!-- In-context AI legend -->
+                      <rect x="-169.048" y="51.200" width="17.143" height="12.800" fill="url(#hatchPattern)"/>
+                      <text x="-140.762" y="61.440" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#333">In-context AI*</text>
+                      
+                      <!-- Expert legend -->
+                      <rect x="-169.048" y="72.533" width="17.143" height="12.800" fill="#d73027"/>
+                      <text x="-140.762" y="82.773" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#333">Expert Writer</text>
+                      
+                      <!-- Cost explanations -->
+                      <text x="-169.048" y="102.400" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#666">*Fine-tuned AI = Fine-tuning Cost + In-context Prompting Cost</text>
+                      <text x="-169.048" y="120.200" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#666">*In-context AI = In-context Prompting Cost (all $3 after rounding-up)</text>
+                    </g>
+                  </g>
+                  
+                  <!-- X-axis label -->
+                  <text x="571.429" y="725.333" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#333">Total Cost to produce 100k words</text>
+                </svg>
+          </svg>
+
+          <!-- Panel B: Fine-tuning premium - Positioned for perfect alignment -->
+          <svg x="520" y="-20" width="830" height="820" preserveAspectRatio="xMinYMin meet">
+            <svg font-family="Helvetica, Arial, sans-serif" viewBox="0 0 1000 850" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Title -->
+                  <text x="500" y="15" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#333">Fine-tuning Premium: Change in expert preference for AI over human writing after author-specific fine-tuning</text>
+                  <text x="500" y="40" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#666">Δ = P(prefer fine-tuned) - P(prefer few-shot)</text>
+                  <text x="500" y="60" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#666">Stylistic Fidelity (Top), Writing Quality (Bottom)</text>
+                  
+                  <!-- Stylistic Fidelity Premium vs Data Size (Top half) -->
+                  <g transform="translate(100, 90)">
+                    <!-- Vertical grid lines -->
+                    <g stroke="#f0f0f0" stroke-width="0.5">
+                      <line x1="67" y1="0" x2="67" y2="300"/>   <!-- 1M tokens -->
+                      <line x1="133" y1="0" x2="133" y2="300"/>   <!-- 2M tokens -->
+                      <line x1="200" y1="0" x2="200" y2="300"/> <!-- 3M tokens -->
+                      <line x1="267" y1="0" x2="267" y2="300"/> <!-- 4M tokens -->
+                      <line x1="333" y1="0" x2="333" y2="300"/> <!-- 5M tokens -->
+                      <line x1="400" y1="0" x2="400" y2="300"/> <!-- 6M tokens -->
+                      <line x1="467" y1="0" x2="467" y2="300"/> <!-- 7M tokens -->
+                      <line x1="533" y1="0" x2="533" y2="300"/> <!-- 8M tokens -->
+                      <line x1="600" y1="0" x2="600" y2="300"/> <!-- 9M tokens -->
+                      <line x1="667" y1="0" x2="667" y2="300"/> <!-- 10M tokens -->
+                      <line x1="733" y1="0" x2="733" y2="300"/> <!-- 11M tokens -->
+                    </g>
+                    
+                    <!-- Zero line (no fine-tuning premium) for fidelity -->
+                    <line x1="0" y1="214" x2="800" y2="214" stroke="#666" stroke-width="1.5" stroke-dasharray="3,3"/>
+                    
+                    <!-- Data points - Stylistic Fidelity Premium -->
+                    <g stroke="white" stroke-width="1.5">
+                      <!-- Positive improvements -->
+                      <!-- Han Kang: 1.31M, +70.8pp -->
+                      <circle cx="87" cy="12" r="4" fill="#1a9850"/>
+                      <!-- Chimamanda Adichie: 4.44M, +70.8pp -->
+                      <circle cx="296" cy="12" r="4" fill="#1a9850"/>
+                      <!-- Orhan Pamuk: 10.90M, +70.8pp -->
+                      <circle cx="727" cy="12" r="4" fill="#1a9850"/>
+                      
+                      <!-- Rachel Cusk: 1.97M, +58.3pp -->
+                      <circle cx="131" cy="47" r="4" fill="#1a9850"/>
+                      <!-- Kazuo Ishiguro: 4.98M, +58.3pp -->
+                      <circle cx="332" cy="47" r="4" fill="#1a9850"/>
+                      
+                      <!-- Roxane Gay: 2.68M, +54.2pp -->
+                      <circle cx="179" cy="61" r="4" fill="#1a9850"/>
+                      
+                      <!-- Ian McEwan: 7.22M, +50pp -->
+                      <circle cx="481" cy="71" r="4" fill="#1a9850"/>
+                      <!-- Sigrid Nunez: 2.84M, +50pp -->
+                      <circle cx="189" cy="71" r="4" fill="#1a9850"/>
+                      
+                      <!-- Yoko Ogawa: 1.75M, +47.3pp -->
+                      <circle cx="117" cy="78" r="4" fill="#1a9850"/>
+                      
+                      <!-- Junot Diaz: 1.21M, +45.9pp -->
+                      <circle cx="81" cy="83" r="4" fill="#1a9850"/>
+                      <!-- Min Jin Lee: 2.50M, +45.8pp -->
+                      <circle cx="167" cy="83" r="4" fill="#1a9850"/>
+                      
+                      <!-- Cheryl Strayed: 2.09M, +41.7pp -->
+                      <circle cx="139" cy="90" r="4" fill="#1a9850"/>
+                      <!-- Annie Proulx: 6.52M, +41.7pp -->
+                      <circle cx="435" cy="90" r="4" fill="#1a9850"/>
+                      <!-- Colson Whitehead: 5.21M, +41.7pp -->
+                      <circle cx="347" cy="90" r="4" fill="#1a9850"/>
+                      <!-- Haruki Murakami: 4.64M, +41.7pp -->
+                      <circle cx="309" cy="90" r="4" fill="#1a9850"/>
+                      
+                      <!-- Sally Rooney: 2.11M, +37.5pp -->
+                      <circle cx="141" cy="102" r="4" fill="#1a9850"/>
+                      <!-- Jhumpa Lahiri: 2.63M, +37.5pp -->
+                      <circle cx="175" cy="102" r="4" fill="#1a9850"/>
+                      
+                      <!-- Lydia Davis: 2.00M, +33.3pp -->
+                      <circle cx="133" cy="114" r="4" fill="#1a9850"/>
+                      <!-- George Saunders: 3.17M, +33.3pp -->
+                      <circle cx="211" cy="114" r="4" fill="#1a9850"/>
+                      
+                      <!-- Ottessa Moshfegh: 1.63M, +32.1pp -->
+                      <circle cx="109" cy="117" r="4" fill="#1a9850"/>
+                      
+                      <!-- Margaret Atwood: 4.54M, +29.1pp -->
+                      <circle cx="302" cy="126" r="4" fill="#1a9850"/>
+                      <!-- Percival Everett: 5.34M, +29.1pp -->
+                      <circle cx="356" cy="126" r="4" fill="#1a9850"/>
+                      <!-- Zadie Smith: 4.85M, +29.2pp -->
+                      <circle cx="323" cy="126" r="4" fill="#1a9850"/>
+                      
+                      <!-- Marilynne Robinson: 6.90M, +25pp -->
+                      <circle cx="460" cy="143" r="4" fill="#1a9850"/>
+                      
+                      <!-- Jonathan Franzen: 7.70M, +12.5pp -->
+                      <circle cx="513" cy="179" r="4" fill="#1a9850"/>
+                      <!-- Louise Erdrich: 5.83M, +12.5pp -->
+                      <circle cx="389" cy="179" r="4" fill="#1a9850"/>
+                      
+                      <!-- Ben Lerner: 1.83M, +8.4pp -->
+                      <circle cx="122" cy="190" r="4" fill="#1a9850"/>
+                      <!-- Salman Rushdie: 5.30M, +8.3pp -->
+                      <circle cx="353" cy="191" r="4" fill="#1a9850"/>
+                      
+                      <!-- Annie Ernaux: 3.06M, +4.2pp -->
+                      <circle cx="204" cy="202" r="4" fill="#1a9850"/>
+                      
+                      <!-- Negative improvements -->
+                      <!-- Tony Tulathimutte: 0.89M, -13.7pp -->
+                      <circle cx="59" cy="253" r="4" fill="#d73027"/>
+                    </g>
+                    
+                    <!-- Author labels for stylistic scatter -->
+                    <g fill="#333" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle">
+                      <text x="87" y="4">H.Kang</text>
+                      <text x="296" y="5">C.Adichie</text>
+                      <text x="727" y="7">O.Pamuk</text>
+                      <text x="131" y="42">R.Cusk</text>
+                      <text x="332" y="40">K.Ishiguro</text>
+                      <text x="179" y="56">R.Gay</text>
+                      <text x="481" y="63">I.McEwan</text>
+                      <text x="214" y="66">S.Nunez</text>
+                      <text x="117" y="70">Y.Ogawa</text>
+                      <text x="81" y="76">J.Diaz</text>
+                      <text x="163" y="78">M.J.Lee</text>
+                      <text x="169" y="95">C.Strayed</text>
+                      <text x="435" y="82">A.Proulx</text>
+                      <text x="347" y="85">C.Whitehead</text>
+                      <text x="280" y="85">H.Murakami</text>
+                      <text x="161" y="115">S.Rooney</text>
+                      <text x="205" y="105">J.Lahiri</text>
+                      <text x="133" y="128">L.Davis</text>
+                      <text x="211" y="125">G.Saunders</text>
+                      <text x="90" y="108">O.Moshfegh</text>
+                      <text x="275" y="121">M.Atwood</text>
+                      <text x="370" y="121">P.Everett</text>
+                      <text x="323" y="121">Z.Smith</text>
+                      <text x="460" y="135">M.Robinson</text>
+                      <text x="513" y="170">J.Franzen</text>
+                      <text x="389" y="174">L.Erdrich</text>
+                      <text x="122" y="185">B.Lerner</text>
+                      <text x="353" y="186">S.Rushdie</text>
+                      <text x="204" y="197">A.Ernaux</text>
+                      <text x="59" y="268">T.Tulathimutte</text>
+                    </g>
+                  </g>
+                  
+                  <!-- Soft separator line -->
+                  <line x1="100" y1="420" x2="900" y2="420" stroke="#e0e0e0" stroke-width="0.8" opacity="0.7"/>
+                  
+                  <!-- Writing Quality Premium vs Data Size (Bottom half) -->
+                  <g transform="translate(100, 440)">
+                    <!-- Vertical grid lines -->
+                    <g stroke="#f0f0f0" stroke-width="0.5">
+                      <line x1="67" y1="0" x2="67" y2="300"/>   <!-- 1M tokens -->
+                      <line x1="133" y1="0" x2="133" y2="300"/>   <!-- 2M tokens -->
+                      <line x1="200" y1="0" x2="200" y2="300"/> <!-- 3M tokens -->
+                      <line x1="267" y1="0" x2="267" y2="300"/> <!-- 4M tokens -->
+                      <line x1="333" y1="0" x2="333" y2="300"/> <!-- 5M tokens -->
+                      <line x1="400" y1="0" x2="400" y2="300"/> <!-- 6M tokens -->
+                      <line x1="467" y1="0" x2="467" y2="300"/> <!-- 7M tokens -->
+                      <line x1="533" y1="0" x2="533" y2="300"/> <!-- 8M tokens -->
+                      <line x1="600" y1="0" x2="600" y2="300"/> <!-- 9M tokens -->
+                      <line x1="667" y1="0" x2="667" y2="300"/> <!-- 10M tokens -->
+                      <line x1="733" y1="0" x2="733" y2="300"/> <!-- 11M tokens -->
+                    </g>
+                    
+                    <!-- Zero line (no fine-tuning premium) for quality -->
+                    <line x1="0" y1="200" x2="800" y2="200" stroke="#666" stroke-width="1.5" stroke-dasharray="3,3"/>
+                    
+                    <!-- Data points - Writing Quality Premium -->
+                    <g stroke="white" stroke-width="1.5">
+                      <!-- Positive improvements -->
+                      <!-- Cheryl Strayed: 2.09M, +50pp -->
+                      <circle cx="139" cy="33" r="4" fill="#1a9850"/>
+                      
+                      <!-- Han Kang: 1.31M, +37.5pp -->
+                      <circle cx="87" cy="75" r="4" fill="#1a9850"/>
+                      <!-- Salman Rushdie: 5.30M, +37.5pp -->
+                      <circle cx="353" cy="75" r="4" fill="#1a9850"/>
+                      
+                      <!-- Haruki Murakami: 4.64M, +33.3pp -->
+                      <circle cx="309" cy="89" r="4" fill="#1a9850"/>
+                      <!-- Orhan Pamuk: 10.90M, +33.3pp -->
+                      <circle cx="727" cy="89" r="4" fill="#1a9850"/>
+                      
+                      <!-- Kazuo Ishiguro: 4.98M, +28.7pp -->
+                      <circle cx="332" cy="104" r="4" fill="#1a9850"/>
+                      
+                      <!-- Rachel Cusk: 1.97M, +25pp -->
+                      <circle cx="131" cy="117" r="4" fill="#1a9850"/>
+                      <!-- Marilynne Robinson: 6.90M, +25pp -->
+                      <circle cx="460" cy="117" r="4" fill="#1a9850"/>
+                      
+                      <!-- Annie Ernaux: 3.06M, +20.9pp -->
+                      <circle cx="204" cy="130" r="4" fill="#1a9850"/>
+                      <!-- Lydia Davis: 2.00M, +20.9pp -->
+                      <circle cx="133" cy="130" r="4" fill="#1a9850"/>
+                      <!-- Ben Lerner: 1.83M, +20.8pp -->
+                      <circle cx="122" cy="131" r="4" fill="#1a9850"/>
+                      
+                      <!-- Percival Everett: 5.34M, +19.4pp -->
+                      <circle cx="356" cy="135" r="4" fill="#1a9850"/>
+                      
+                      <!-- Jonathan Franzen: 7.70M, +17.4pp -->
+                      <circle cx="513" cy="142" r="4" fill="#1a9850"/>
+                      
+                      <!-- Ian McEwan: 7.22M, +16.7pp -->
+                      <circle cx="481" cy="144" r="4" fill="#1a9850"/>
+                      <!-- Margaret Atwood: 4.54M, +16.7pp -->
+                      <circle cx="302" cy="144" r="4" fill="#1a9850"/>
+                      <!-- Louise Erdrich: 5.83M, +16.7pp -->
+                      <circle cx="389" cy="144" r="4" fill="#1a9850"/>
+                      
+                      <!-- George Saunders: 3.17M, +12.5pp -->
+                      <circle cx="211" cy="158" r="4" fill="#1a9850"/>
+                      
+                      <!-- Yoko Ogawa: 1.75M, +8.3pp -->
+                      <circle cx="117" cy="172" r="4" fill="#1a9850"/>
+                      
+                      <!-- Colson Whitehead: 5.21M, +7.2pp -->
+                      <circle cx="347" cy="176" r="4" fill="#1a9850"/>
+                      
+                      <!-- Junot Diaz: 1.21M, +4.2pp -->
+                      <circle cx="81" cy="186" r="4" fill="#1a9850"/>
+                      <!-- Sally Rooney: 2.11M, +4.2pp -->
+                      <circle cx="141" cy="186" r="4" fill="#1a9850"/>
+                      <!-- Sigrid Nunez: 2.84M, +4.2pp -->
+                      <circle cx="189" cy="186" r="4" fill="#1a9850"/>
+                      
+                      <!-- Zero improvements -->
+                      <!-- Tony Tulathimutte: 0.89M, 0pp -->
+                      <circle cx="59" cy="200" r="4" fill="#999999"/>
+                      <!-- Annie Proulx: 6.52M, 0pp -->
+                      <circle cx="435" cy="200" r="4" fill="#999999"/>
+                      <!-- Roxane Gay: 2.68M, 0pp -->
+                      <circle cx="179" cy="200" r="4" fill="#999999"/>
+                      <!-- Zadie Smith: 4.85M, 0pp -->
+                      <circle cx="323" cy="200" r="4" fill="#999999"/>
+                      
+                      <!-- Negative improvements -->
+                      <!-- Ottessa Moshfegh: 1.63M, -4.2pp -->
+                      <circle cx="109" cy="214" r="4" fill="#d73027"/>
+                      <!-- Min Jin Lee: 2.50M, -8.4pp -->
+                      <circle cx="167" cy="228" r="4" fill="#d73027"/>
+                      <!-- Jhumpa Lahiri: 2.63M, -12.5pp -->
+                      <circle cx="175" cy="242" r="4" fill="#d73027"/>
+                      <!-- Chimamanda Adichie: 4.44M, -20.8pp -->
+                      <circle cx="296" cy="269" r="4" fill="#d73027"/>
+                    </g>
+                    
+                    <!-- Author labels for quality scatter -->
+                    <g fill="#333" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle">
+                      <text x="139" y="28">C.Strayed</text>
+                      <text x="87" y="68">H.Kang</text>
+                      <text x="353" y="70">S.Rushdie</text>
+                      <text x="309" y="84">H.Murakami</text>
+                      <text x="727" y="84">O.Pamuk</text>
+                      <text x="342" y="99">K.Ishiguro</text>
+                      <text x="131" y="112">R.Cusk</text>
+                      <text x="460" y="112">M.Robinson</text>
+                      <text x="204" y="125">A.Ernaux</text>
+                      <text x="153" y="125">L.Davis</text>
+                      <text x="102" y="126">B.Lerner</text>
+                      <text x="356" y="125">P.Everett</text>
+                      <text x="513" y="137">J.Franzen</text>
+                      <text x="450" y="139">I.McEwan</text>
+                      <text x="302" y="139">M.Atwood</text>
+                      <text x="389" y="139">L.Erdrich</text>
+                      <text x="211" y="153">G.Saunders</text>
+                      <text x="117" y="162">Y.Ogawa</text>
+                      <text x="347" y="171">C.Whitehead</text>
+                      <text x="81" y="181">J.Diaz</text>
+                      <text x="151" y="181">S.Rooney</text>
+                      <text x="199" y="181">S.Nunez</text>
+                      <text x="39" y="195">T.Tulathimutte</text>
+                      <text x="435" y="195">A.Proulx</text>
+                      <text x="195" y="215">R.Gay</text>
+                      <text x="323" y="195">Z.Smith</text>
+                      <text x="109" y="209">O.Moshfegh</text>
+                      <text x="167" y="223">M.J.Lee</text>
+                      <text x="185" y="237">J.Lahiri</text>
+                      <text x="296" y="264">C.Adichie</text>
+                    </g>
+                  </g>
+                  
+                  <!-- Shared X-axis -->
+                  <g transform="translate(100, 750)">
+                    <g stroke="#333" stroke-width="0.5">
+                      <line x1="0" y1="0" x2="800" y2="0"/>
+                      <!-- X-axis tick marks -->
+                      <g stroke="#333" stroke-width="0.5">
+                        <line x1="0" y1="0" x2="0" y2="5"/>
+                        <line x1="67" y1="0" x2="67" y2="5"/>
+                        <line x1="133" y1="0" x2="133" y2="5"/>
+                        <line x1="200" y1="0" x2="200" y2="5"/>
+                        <line x1="267" y1="0" x2="267" y2="5"/>
+                        <line x1="333" y1="0" x2="333" y2="5"/>
+                        <line x1="400" y1="0" x2="400" y2="5"/>
+                        <line x1="467" y1="0" x2="467" y2="5"/>
+                        <line x1="533" y1="0" x2="533" y2="5"/>
+                        <line x1="600" y1="0" x2="600" y2="5"/>
+                        <line x1="667" y1="0" x2="667" y2="5"/>
+                        <line x1="733" y1="0" x2="733" y2="5"/>
+                        <line x1="800" y1="0" x2="800" y2="5"/>
+                      </g>
+                      <!-- X-axis labels -->
+                      <g fill="#333" font-family="Helvetica, Arial, sans-serif" font-size="14" text-anchor="middle">
+                        <text x="0" y="18">0</text>
+                        <text x="67" y="18">1</text>
+                        <text x="133" y="18">2</text>
+                        <text x="200" y="18">3</text>
+                        <text x="267" y="18">4</text>
+                        <text x="333" y="18">5</text>
+                        <text x="400" y="18">6</text>
+                        <text x="467" y="18">7</text>
+                        <text x="533" y="18">8</text>
+                        <text x="600" y="18">9</text>
+                        <text x="667" y="18">10</text>
+                        <text x="733" y="18">11</text>
+                        <text x="800" y="18">12</text>
+                      </g>
+                    </g>
+                    <!-- X-axis label -->
+                    <text x="400" y="42" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">Fine-tuning corpus size (Million tokens)</text>
+                  </g>
+                  
+                  <!-- Shared Y-axis -->
+                  <g transform="translate(100, 90)">
+                    <g stroke="#333" stroke-width="0.5">
+                      <line x1="0" y1="0" x2="0" y2="660"/>
+                      <!-- Y-axis tick marks and labels -->
+                      <g stroke="#333" stroke-width="0.5">
+                        <!-- Top subplot (fidelity): -30 to +75pp, 10-point intervals -->
+                        <line x1="0" y1="14" x2="-5" y2="14"/>    <!-- 70 -->
+                        <line x1="0" y1="43" x2="-5" y2="43"/>    <!-- 60 -->
+                        <line x1="0" y1="71" x2="-5" y2="71"/>    <!-- 50 -->
+                        <line x1="0" y1="100" x2="-5" y2="100"/>  <!-- 40 -->
+                        <line x1="0" y1="129" x2="-5" y2="129"/>  <!-- 30 -->
+                        <line x1="0" y1="157" x2="-5" y2="157"/>  <!-- 20 -->
+                        <line x1="0" y1="186" x2="-5" y2="186"/>  <!-- 10 -->
+                        <line x1="0" y1="214" x2="-5" y2="214"/>  <!-- 0 -->
+                        <line x1="0" y1="243" x2="-5" y2="243"/>  <!-- -10 -->
+                        <line x1="0" y1="271" x2="-5" y2="271"/>  <!-- -20 -->
+                        <line x1="0" y1="300" x2="-5" y2="300"/>  <!-- -30 -->
+                        
+                        <!-- Bottom subplot (quality): -30 to +60pp, 10-point intervals -->
+                        <line x1="0" y1="350" x2="-5" y2="350"/>  <!-- 60 -->
+                        <line x1="0" y1="383" x2="-5" y2="383"/>  <!-- 50 -->
+                        <line x1="0" y1="417" x2="-5" y2="417"/>  <!-- 40 -->
+                        <line x1="0" y1="450" x2="-5" y2="450"/>  <!-- 30 -->
+                        <line x1="0" y1="483" x2="-5" y2="483"/>  <!-- 20 -->
+                        <line x1="0" y1="517" x2="-5" y2="517"/>  <!-- 10 -->
+                        <line x1="0" y1="550" x2="-5" y2="550"/>  <!-- 0 -->
+                        <line x1="0" y1="583" x2="-5" y2="583"/>  <!-- -10 -->
+                        <line x1="0" y1="617" x2="-5" y2="617"/>  <!-- -20 -->
+                        <line x1="0" y1="650" x2="-5" y2="650"/>  <!-- -30 -->
+                      </g>
+                      <!-- Y-axis labels -->
+                      <g fill="#333" font-family="Helvetica, Arial, sans-serif" font-size="14" text-anchor="end">
+                        <!-- Top subplot: 10-point intervals -->
+                        <text x="-8" y="18">70</text>
+                        <text x="-8" y="47">60</text>
+                        <text x="-8" y="75">50</text>
+                        <text x="-8" y="104">40</text>
+                        <text x="-8" y="133">30</text>
+                        <text x="-8" y="161">20</text>
+                        <text x="-8" y="190">10</text>
+                        <text x="-8" y="218">0</text>
+                        <text x="-8" y="247">-10</text>
+                        <text x="-8" y="275">-20</text>
+                        <text x="-8" y="304">-30</text>
+                        
+                        <!-- Bottom subplot: 10-point intervals -->
+                        <text x="-8" y="354">60</text>
+                        <text x="-8" y="387">50</text>
+                        <text x="-8" y="421">40</text>
+                        <text x="-8" y="454">30</text>
+                        <text x="-8" y="487">20</text>
+                        <text x="-8" y="521">10</text>
+                        <text x="-8" y="554">0</text>
+                        <text x="-8" y="587">-10</text>
+                        <text x="-8" y="621">-20</text>
+                        <text x="-8" y="654">-30</text>
+                      </g>
+                    </g>
+                  </g>
+                  
+                  <!-- Y-axis labels -->
+                  <text x="55" y="270" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333" transform="rotate(-90, 45, 245)">Δ Stylistic Fidelity (%)</text>
+                  <text x="45" y="590" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333" transform="rotate(-90, 45, 565)">ΔWriting Quality (%)</text>
+                  
+                  <!-- Legend positioned in bottom right -->
+                  <g transform="translate(600, 320)">
+                    <text x="0" y="0" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">Author-specific Fine-tuning Premium (%):</text>
+                    
+                    <!-- Green -->
+                    <circle cx="5" cy="20" r="4" fill="#1a9850" stroke="white" stroke-width="1"/>
+                    <text x="15" y="25" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">Δ > 0: Fine-tuning improves AI performance</text>
+                    
+                    <!-- Gray/Parity -->
+                    <circle cx="5" cy="40" r="4" fill="#999999" stroke="white" stroke-width="1"/>
+                    <text x="15" y="45" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">Δ = 0: No change from fine-tuning</text>
+                    
+                    <!-- Red -->
+                    <circle cx="5" cy="60" r="4" fill="#d73027" stroke="white" stroke-width="1"/>
+                    <text x="15" y="65" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#333">Δ < 0: Fine-tuning hurts AI performance</text>
+                  </g>
+                </svg>
+          </svg>
+
+          <!-- Panel letters -->
+          <g font-family="Helvetica, Arial, sans-serif" font-weight="bold" fill="#111">
+            <text x="20" y="34" font-size="22">A.</text>
+            <text x="20" y="300" font-size="22">C.</text>
+            <text x="532" y="34" font-size="22">B.</text>
+          </g>
+        </svg>
+    </div>
+</body>
+</html>

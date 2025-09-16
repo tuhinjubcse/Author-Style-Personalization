@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Six-Panel Results Figure</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .figure-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .main-svg {
+            width: 100%;
+            height: 900px;
+        }
+        .panel-title {
+            font-size: 18px;
+            text-anchor: middle;
+        }
+        .axis {
+            font-size: 14px;
+        }
+        .axis-label {
+            font-size: 14px;
+        }
+        .grid-line {
+            stroke: #f0f0f0;
+            stroke-width: 0.5;
+        }
+        .favors-human {
+            stroke: #d73027;
+            fill: #d73027;
+        }
+        .favors-ai {
+            stroke: #1a9850;
+            fill: #1a9850;
+        }
+        .expert {
+            stroke: #2166ac;
+            fill: #2166ac;
+        }
+        .lay {
+            stroke: #f46d43;
+            fill: #f46d43;
+        }
+        .legend {
+            font-size: 14px;
+        }
+        .reference-line {
+            stroke: #666;
+            stroke-dasharray: 3,3;
+            stroke-width: 1;
+        }
+        .ci-line {
+            stroke-width: 2;
+        }
+        .point {
+            stroke-width: 2;
+            stroke: white;
+        }
+        .annotation-text {
+            font-size: 14px;
+            fill: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="figure-container">
+        <svg class="main-svg" id="main-figure"></svg>
+    </div>
+
+    <script>
+        const svg = d3.select("#main-figure");
+        const totalWidth = 1500;
+        const totalHeight = 880;
+        
+        // Define panel dimensions and positions
+        const forestPanelWidth = 600;
+        const regularPanelWidth = 500;
+        const panelHeight = 260;
+        const panelSpacing = 50;
+        
+        // UPDATED: Moved B, D, F panels 20px to the right AND moved E, F up by 25px
+        const panels = [
+            {id: 'A', x: 50, y: 30, title: 'Stylistic Fidelity', width: forestPanelWidth},
+            {id: 'B', x: 600, y: 30, title: 'Writing Quality', width: forestPanelWidth},
+            {id: 'C', x: 100, y: 30 + panelHeight + panelSpacing, title: 'Stylistic Fidelity - Individual Models', width: regularPanelWidth},
+            {id: 'D', x: 670, y: 30 + panelHeight + panelSpacing, title: 'Writing Quality - Individual Models', width: regularPanelWidth},
+            {id: 'E', x: 100, y: 625, title: 'AI Detection Results', width: regularPanelWidth},  // Moved up from 650 to 625
+            {id: 'F', x: 670, y: 625, title: 'Detectability vs Writing Quality Preference', width: regularPanelWidth}  // Moved up from 650 to 625
+        ];
+        
+        // Create panel containers
+        panels.forEach(panel => {
+            const g = svg.append("g")
+                .attr("id", `panel-${panel.id}`)
+                .attr("transform", `translate(${panel.x}, ${panel.y})`);
+            
+            // Panel title
+            g.append("text")
+                .attr("class", "panel-title")
+                .attr("x", panel.width/2)
+                .attr("y", 15)
+                .text(panel.title);
+        });
+        
+        // Add panel labels - keeping original positions for labels, but adjusting E and F vertical position
+        const leftColumnX = 80;
+        const rightColumnX = 630;
+        
+        // Left column labels (A, C, E)
+        svg.append("text")
+            .attr("class", "panel-title")
+            .attr("x", 80)
+            .attr("y", 45)
+            .style("font-weight", "bold")
+            .style("font-size", "22px")
+            .text("A.");
+            
+        svg.append("text")
+            .attr("class", "panel-title")
+            .attr("x", leftColumnX)
+            .attr("y", 355)
+            .style("font-weight", "bold")
+            .style("font-size", "22px")
+            .text("C.");
+            
+        svg.append("text")
+            .attr("class", "panel-title")
+            .attr("x", leftColumnX)
+            .attr("y", 640)  // Adjusted from 665 to 640 (25px up)
+            .style("font-weight", "bold")
+            .style("font-size", "22px")
+            .text("E.");
+        
+        // Right column labels (B, D, F)
+        svg.append("text")
+            .attr("class", "panel-title")
+            .attr("x", 650)
+            .attr("y", 45)
+            .style("font-weight", "bold")
+            .style("font-size", "22px")
+            .text("B.");
+            
+        svg.append("text")
+            .attr("class", "panel-title")
+            .attr("x", rightColumnX+20)
+            .attr("y", 355)
+            .style("font-weight", "bold")
+            .style("font-size", "22px")
+            .text("D.");
+            
+        svg.append("text")
+            .attr("class", "panel-title")
+            .attr("x", rightColumnX+20)
+            .attr("y", 640)  // Adjusted from 665 to 640 (25px up)
+            .style("font-weight", "bold")
+            .style("font-size", "22px")
+            .text("F.");
+        
+        // Panel A & B: Forest Plots
+        function createForestPlot(panelId, data) {
+            const g = d3.select(`#panel-${panelId}`);
+            const margin = {top: 45, right: 150, bottom: 40, left: 150};
+            const width = forestPanelWidth - margin.left - margin.right;
+            const height = panelHeight - margin.top - margin.bottom;
+            
+            const plotG = g.append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+            
+            // Create grid
+            const xScale = d3.scaleLog()
+                .domain([0.05, 20])
+                .range([0, width]);
+            
+            const yScale = d3.scaleBand()
+                .domain(data.map(d => d.label))
+                .range([0, height])
+                .padding(0.2);
+            
+            // Grid lines
+            const xTicks = [0.1, 0.2, 0.5, 1, 2, 5, 10];
+            xTicks.forEach(tick => {
+                plotG.append("line")
+                    .attr("class", "grid-line")
+                    .attr("x1", xScale(tick))
+                    .attr("x2", xScale(tick))
+                    .attr("y1", 0)
+                    .attr("y2", height);
+            });
+            
+            // Reference line at OR = 1
+            plotG.append("line")
+                .attr("class", "reference-line")
+                .attr("x1", xScale(1))
+                .attr("x2", xScale(1))
+                .attr("y1", 0)
+                .attr("y2", height);
+            
+            // Annotations for favors human/AI with colors
+            plotG.append("text")
+                .attr("class", "annotation-text")
+                .attr("x", xScale(0.3))
+                .attr("y", -5)
+                .style("text-anchor", "middle")
+                .style("fill", "#d73027")
+                .text("Favors Human");
+            
+            plotG.append("text")
+                .attr("class", "annotation-text")
+                .attr("x", xScale(3))
+                .attr("y", -5)
+                .style("text-anchor", "middle")
+                .style("fill", "#1a9850")
+                .text("Favors AI");
+            
+            // OR (95% CI) header
+            plotG.append("text")
+                .attr("class", "annotation-text")
+                .attr("x", width + 15)
+                .attr("y", -5)
+                .style("text-anchor", "left")
+                .style("fill", "black")
+                .text("OR (95% CI)");
+            
+            // Confidence intervals
+            plotG.selectAll(".ci-line")
+                .data(data)
+                .enter()
+                .append("line")
+                .attr("class", "ci-line")
+                .attr("x1", d => xScale(d.lower))
+                .attr("x2", d => xScale(d.upper))
+                .attr("y1", d => yScale(d.label) + yScale.bandwidth()/2)
+                .attr("y2", d => yScale(d.label) + yScale.bandwidth()/2)
+                .attr("stroke", d => !d.significant ? "#999999" : (d.or < 1 ? "#d73027" : "#1a9850"));
+            
+            // Add caps to confidence intervals
+            plotG.selectAll(".ci-cap-left")
+                .data(data)
+                .enter()
+                .append("line")
+                .attr("class", "ci-cap-left")
+                .attr("x1", d => xScale(d.lower))
+                .attr("x2", d => xScale(d.lower))
+                .attr("y1", d => yScale(d.label) + yScale.bandwidth()/2 - 4)
+                .attr("y2", d => yScale(d.label) + yScale.bandwidth()/2 + 4)
+                .attr("stroke", d => !d.significant ? "#999999" : (d.or < 1 ? "#d73027" : "#1a9850"))
+                .attr("stroke-width", 2);
+            
+            plotG.selectAll(".ci-cap-right")
+                .data(data)
+                .enter()
+                .append("line")
+                .attr("class", "ci-cap-right")
+                .attr("x1", d => xScale(d.upper))
+                .attr("x2", d => xScale(d.upper))
+                .attr("y1", d => yScale(d.label) + yScale.bandwidth()/2 - 4)
+                .attr("y2", d => yScale(d.label) + yScale.bandwidth()/2 + 4)
+                .attr("stroke", d => !d.significant ? "#999999" : (d.or < 1 ? "#d73027" : "#1a9850"))
+                .attr("stroke-width", 2);
+            
+            // Points
+            plotG.selectAll(".point")
+                .data(data)
+                .enter()
+                .append("circle")
+                .attr("class", "point")
+                .attr("cx", d => xScale(d.or))
+                .attr("cy", d => yScale(d.label) + yScale.bandwidth()/2)
+                .attr("r", 4)
+                .attr("fill", d => !d.significant ? "#999999" : (d.or < 1 ? "#d73027" : "#1a9850"));
+            
+            // OR values on the right
+            plotG.selectAll(".or-text")
+                .data(data)
+                .enter()
+                .append("text")
+                .attr("class", "or-text")
+                .attr("x", width + 0)
+                .attr("y", d => yScale(d.label) + yScale.bandwidth()/2 + 4)
+                .style("text-anchor", "left")
+                .style("font-size", "14px")
+                .style("fill", d => !d.significant ? "#999999" : (d.or < 1 ? "#d73027" : "#1a9850"))
+                .text(d => `${d.or.toFixed(2)} (${d.lower.toFixed(2)}-${d.upper.toFixed(2)})`);
+            
+            // X-axis
+            plotG.append("g")
+                .attr("class", "axis")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(xScale)
+                    .tickValues(xTicks)
+                    .tickFormat(d3.format(".1f")));
+            
+            // Y-axis
+            plotG.append("g")
+                .attr("class", "axis")
+                .call(d3.axisLeft(yScale));
+            
+            // X-axis label
+            plotG.append("text")
+                .attr("class", "axis-label")
+                .attr("x", width/2)
+                .attr("y", height + 35)
+                .style("text-anchor", "middle")
+                .text("Odds Ratio (Log Scale)");
+        }
+        
+        // Data from actual results
+        const styleForestData = [
+            {label: "In-Context (Expert)", or: 0.157, lower: 0.0848, upper: 0.290, significant: true},
+            {label: "In-Context (Lay)", or: 0.861, lower: 0.621, upper: 1.19, significant: false},
+            {label: "Fine-tuned (Expert)", or: 8.16, lower: 4.69, upper: 14.2, significant: true},
+            {label: "Fine-tuned (Lay)", or: 8.29, lower: 5.15, upper: 13.3, significant: true}
+        ];
+        
+        const qualityForestData = [
+            {label: "In-Context (Expert)", or: 0.133, lower: 0.0628, upper: 0.280, significant: true},
+            {label: "In-Context (Lay)", or: 1.55, lower: 1.09, upper: 2.21, significant: true},
+            {label: "Fine-tuned (Expert)", or: 1.87, lower: 1.16, upper: 3.02, significant: true},
+            {label: "Fine-tuned (Lay)", or: 2.42, lower: 1.64, upper: 3.57, significant: true}
+        ];
+        
+        createForestPlot('A', styleForestData);
+        createForestPlot('B', qualityForestData);
+        
+        // Panel C & D: Individual Model Line Plots
+        function createModelLinePlot(panelId, data) {
+            const g = d3.select(`#panel-${panelId}`);
+            const margin = {top: 30, right: 40, bottom: 80, left: 50};
+            const width = regularPanelWidth - margin.left - margin.right;
+            const height = panelHeight - margin.top - margin.bottom;
+            
+            const plotG = g.append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+            
+            const xScale = d3.scalePoint()
+                .domain(data.map(d => d.model))
+                .range([0, width])
+                .padding(0.1);
+            
+            const yScale = d3.scaleLinear()
+                .domain([0, 1])
+                .range([height, 0]);
+            
+            // Grid lines - only vertical
+            data.forEach(d => {
+                plotG.append("line")
+                    .attr("class", "grid-line")
+                    .attr("x1", xScale(d.model))
+                    .attr("x2", xScale(d.model))
+                    .attr("y1", 0)
+                    .attr("y2", height);
+            });
+            
+            // Reference line at 50%
+            plotG.append("line")
+                .attr("class", "reference-line")
+                .attr("x1", 0)
+                .attr("x2", width)
+                .attr("y1", yScale(0.5))
+                .attr("y2", yScale(0.5));
+            
+            // Confidence intervals for Expert
+            plotG.selectAll(".expert-ci")
+                .data(data)
+                .enter()
+                .append("line")
+                .attr("class", "expert-ci")
+                .attr("x1", d => xScale(d.model))
+                .attr("x2", d => xScale(d.model))
+                .attr("y1", d => yScale(d.expert_lower))
+                .attr("y2", d => yScale(d.expert_upper))
+                .attr("stroke", "#1a4d72")
+                .attr("stroke-width", 2);
+            
+            // Add caps to Expert confidence intervals
+            plotG.selectAll(".expert-ci-cap-top")
+                .data(data)
+                .enter()
+                .append("line")
+                .attr("class", "expert-ci-cap-top")
+                .attr("x1", d => xScale(d.model) - 4)
+                .attr("x2", d => xScale(d.model) + 4)
+                .attr("y1", d => yScale(d.expert_upper))
+                .attr("y2", d => yScale(d.expert_upper))
+                .attr("stroke", "#1a4d72")
+                .attr("stroke-width", 2);
+            
+            plotG.selectAll(".expert-ci-cap-bottom")
+                .data(data)
+                .enter()
+                .append("line")
+                .attr("class", "expert-ci-cap-bottom")
+                .attr("x1", d => xScale(d.model) - 4)
+                .attr("x2", d => xScale(d.model) + 4)
+                .attr("y1", d => yScale(d.expert_lower))
+                .attr("y2", d => yScale(d.expert_lower))
+                .attr("stroke", "#1a4d72")
+                .attr("stroke-width", 2);
+            
+            // Confidence intervals for Lay
+            plotG.selectAll(".lay-ci")
+                .data(data)
+                .enter()
+                .append("line")
+                .attr("class", "lay-ci")
+                .attr("x1", d => xScale(d.model))
+                .attr("x2", d => xScale(d.model))
+                .attr("y1", d => yScale(d.lay_lower))
+                .attr("y2", d => yScale(d.lay_upper))
+                .attr("stroke", "#ff8c00")
+                .attr("stroke-width", 2);
+            
+            // Add caps to Lay confidence intervals
+            plotG.selectAll(".lay-ci-cap-top")
+                .data(data)
+                .enter()
+                .append("line")
+                .attr("class", "lay-ci-cap-top")
+                .attr("x1", d => xScale(d.model) - 4)
+                .attr("x2", d => xScale(d.model) + 4)
+                .attr("y1", d => yScale(d.lay_upper))
+                .attr("y2", d => yScale(d.lay_upper))
+                .attr("stroke", "#ff8c00")
+                .attr("stroke-width", 2);
+            
+            plotG.selectAll(".lay-ci-cap-bottom")
+                .data(data)
+                .enter()
+                .append("line")
+                .attr("class", "lay-ci-cap-bottom")
+                .attr("x1", d => xScale(d.model) - 4)
+                .attr("x2", d => xScale(d.model) + 4)
+                .attr("y1", d => yScale(d.lay_lower))
+                .attr("y2", d => yScale(d.lay_lower))
+                .attr("stroke", "#ff8c00")
+                .attr("stroke-width", 2);
+            
+            // Line function
+            const line = d3.line()
+                .x(d => xScale(d.model))
+                .y(d => yScale(d.value))
+                .curve(d3.curveMonotoneX);
+            
+            // Expert line
+            const expertData = data.map(d => ({model: d.model, value: d.expert}));
+            plotG.append("path")
+                .datum(expertData)
+                .attr("fill", "none")
+                .attr("stroke", "#1a4d72")
+                .attr("stroke-width", 2)
+                .attr("d", line);
+            
+            // Lay line
+            const layData = data.map(d => ({model: d.model, value: d.lay}));
+            plotG.append("path")
+                .datum(layData)
+                .attr("fill", "none")
+                .attr("stroke", "#ff8c00")
+                .attr("stroke-width", 2)
+                .attr("d", line);
+            
+            // Expert points
+            plotG.selectAll(".expert-point")
+                .data(expertData)
+                .enter()
+                .append("circle")
+                .attr("class", "expert-point")
+                .attr("cx", d => xScale(d.model))
+                .attr("cy", d => yScale(d.value))
+                .attr("r", 4)
+                .attr("fill", "#1a4d72")
+                .attr("stroke", "white")
+                .attr("stroke-width", 1);
+            
+            // Lay points
+            plotG.selectAll(".lay-point")
+                .data(layData)
+                .enter()
+                .append("circle")
+                .attr("class", "lay-point")
+                .attr("cx", d => xScale(d.model))
+                .attr("cy", d => yScale(d.value))
+                .attr("r", 4)
+                .attr("fill", "#ff8c00")
+                .attr("stroke", "white")
+                .attr("stroke-width", 1);
+            
+            // Custom X-axis labels (two lines)
+            const xAxisLabels = [
+                {model: "GPT-4o (In-Context)", line1: "GPT-4o", line2: "(In-Context)"},
+                {model: "Claude (In-Context)", line1: "Claude", line2: "(In-Context)"},
+                {model: "Gemini (In-Context)", line1: "Gemini", line2: "(In-Context)"},
+                {model: "GPT-4o (Fine-tuned)", line1: "GPT-4o", line2: "(Fine-tuned)"}
+            ];
+            
+            // X-axis line
+            plotG.append("g")
+                .attr("class", "axis")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(xScale).tickFormat(""));
+            
+            // Custom labels
+            xAxisLabels.forEach(label => {
+                plotG.append("text")
+                    .attr("class", "axis")
+                    .attr("x", xScale(label.model))
+                    .attr("y", height + 22)
+                    .style("text-anchor", "middle")
+                    .style("font-size", "14px")
+                    .text(label.line1);
+                
+                plotG.append("text")
+                    .attr("class", "axis")
+                    .attr("x", xScale(label.model))
+                    .attr("y", height + 35)
+                    .style("text-anchor", "middle")
+                    .style("font-size", "14px")
+                    .text(label.line2);
+            });
+            
+            // Y-axis
+            plotG.append("g")
+                .attr("class", "axis")
+                .call(d3.axisLeft(yScale).tickValues([0, 0.2, 0.4, 0.6, 0.8, 1.0]));
+            
+            // Y-axis label
+            plotG.append("text")
+                .attr("class", "axis-label")
+                .attr("transform", "rotate(-90)")
+                .attr("y", -35)
+                .attr("x", -height/2)
+                .style("text-anchor", "middle")
+                .text("Probability of Choosing AI");
+            
+            // Legend
+            const legend = plotG.append("g")
+                .attr("class", "legend")
+                .attr("transform", `translate(${width - 120}, 10)`);
+            
+            legend.append("line")
+                .attr("x1", 0)
+                .attr("x2", 15)
+                .attr("y1", 0)
+                .attr("y2", 0)
+                .attr("stroke", "#1a4d72")
+                .attr("stroke-width", 2);
+            
+            legend.append("text")
+                .attr("x", 20)
+                .attr("y", 4)
+                .text("Expert Judges");
+            
+            legend.append("line")
+                .attr("x1", 0)
+                .attr("x2", 15)
+                .attr("y1", 15)
+                .attr("y2", 15)
+                .attr("stroke", "#ff8c00")
+                .attr("stroke-width", 2);
+            
+            legend.append("text")
+                .attr("x", 20)
+                .attr("y", 19)
+                .text("Lay Judges");
+        }
+        
+        // Data for panels C and D
+        const styleModelData = [
+            {model: "GPT-4o (In-Context)", expert: 0.32, expert_lower: 0.214, expert_upper: 0.449, lay: 0.472, lay_lower: 0.407, lay_upper: 0.538},
+            {model: "Claude (In-Context)", expert: 0.38, expert_lower: 0.303, expert_upper: 0.464, lay: 0.528, lay_lower: 0.464, lay_upper: 0.591},
+            {model: "Gemini (In-Context)", expert: 0.167, expert_lower: 0.097, expert_upper: 0.271, lay: 0.444, lay_lower: 0.374, lay_upper: 0.516},
+            {model: "GPT-4o (Fine-tuned)", expert: 0.741, expert_lower: 0.684, expert_upper: 0.790, lay: 0.742, lay_lower: 0.694, lay_upper: 0.785}
+        ];
+        
+        const qualityModelData = [
+            {model: "GPT-4o (In-Context)", expert: 0.193, expert_lower: 0.112, expert_upper: 0.313, lay: 0.608, lay_lower: 0.541, lay_upper: 0.671},
+            {model: "Claude (In-Context)", expert: 0.433, expert_lower: 0.329, expert_upper: 0.544, lay: 0.564, lay_lower: 0.499, lay_upper: 0.627},
+            {model: "Gemini (In-Context)", expert: 0.193, expert_lower: 0.124, expert_upper: 0.289, lay: 0.492, lay_lower: 0.422, lay_upper: 0.563},
+            {model: "GPT-4o (Fine-tuned)", expert: 0.578, expert_lower: 0.519, expert_upper: 0.635, lay: 0.609, lay_lower: 0.562, lay_upper: 0.654}
+        ];
+        
+        createModelLinePlot('C', styleModelData);
+        createModelLinePlot('D', qualityModelData);
+        
+        // UPDATED Panel E: Detection Results with Consistent Grey Shades
+        function createDetectionPlot() {
+            const g = d3.select("#panel-E");
+            const margin = {top: 30, right: 40, bottom: 60, left: 50};
+            const width = regularPanelWidth - margin.left - margin.right;
+            const height = panelHeight - margin.top - margin.bottom;
+            
+            const plotG = g.append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+            
+            // Updated data structure with both detectors
+            const data = [
+                {
+                    category: "Human\nWriting",
+                    pangram: 0.00,
+                    gptzero: 0.00
+                },
+                {
+                    category: "In-Context\nPrompting",
+                    pangram: 0.97,
+                    gptzero: 0.913
+                },
+                {
+                    category: "Fine-tuned\nAI",
+                    pangram: 0.03,
+                    gptzero: 0.00
+                }
+            ];
+            
+            // Main category scale
+            const xScale = d3.scaleBand()
+                .domain(data.map(d => d.category))
+                .range([0, width])
+                .padding(0.3);
+            
+            // Sub-scale for the two detectors within each category
+            const xSubScale = d3.scaleBand()
+                .domain(['pangram', 'gptzero'])
+                .range([0, xScale.bandwidth()])
+                .padding(0.1);
+            
+            const yScale = d3.scaleLinear()
+                .domain([0, 1])
+                .range([height, 0]);
+            
+            // Grid lines - only vertical at category centers
+            data.forEach(d => {
+                plotG.append("line")
+                    .attr("class", "grid-line")
+                    .attr("x1", xScale(d.category) + xScale.bandwidth()/2)
+                    .attr("x2", xScale(d.category) + xScale.bandwidth()/2)
+                    .attr("y1", 0)
+                    .attr("y2", height);
+            });
+            
+            // Create groups for each category
+            const categoryGroups = plotG.selectAll(".category-group")
+                .data(data)
+                .enter()
+                .append("g")
+                .attr("class", "category-group")
+                .attr("transform", d => `translate(${xScale(d.category)}, 0)`);
+            
+            // Pangram bars - dark grey
+            categoryGroups.append("rect")
+                .attr("class", "bar-pangram")
+                .attr("x", xSubScale('pangram'))
+                .attr("y", d => yScale(d.pangram))
+                .attr("width", xSubScale.bandwidth())
+                .attr("height", d => height - yScale(d.pangram))
+                .attr("fill", "#404040");  // Dark grey
+            
+            // GPTZero bars - light grey
+            categoryGroups.append("rect")
+                .attr("class", "bar-gptzero")
+                .attr("x", xSubScale('gptzero'))
+                .attr("y", d => yScale(d.gptzero))
+                .attr("width", xSubScale.bandwidth())
+                .attr("height", d => height - yScale(d.gptzero))
+                .attr("fill", "#999999");  // Light grey
+            
+            // Value labels for Pangram
+            categoryGroups.append("text")
+                .attr("class", "value-label")
+                .attr("x", xSubScale('pangram') + xSubScale.bandwidth()/2)
+                .attr("y", d => yScale(d.pangram) - 5)
+                .style("text-anchor", "middle")
+                .style("font-size", "13px")
+                .text(d => d.pangram.toFixed(2));
+            
+            // Value labels for GPTZero
+            categoryGroups.append("text")
+                .attr("class", "value-label")
+                .attr("x", xSubScale('gptzero') + xSubScale.bandwidth()/2)
+                .attr("y", d => yScale(d.gptzero) - 5)
+                .style("text-anchor", "middle")
+                .style("font-size", "13px")
+                .text(d => d.gptzero.toFixed(2));
+            
+            // X-axis
+            plotG.append("g")
+                .attr("class", "axis")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(xScale));
+            
+            // Y-axis
+            plotG.append("g")
+                .attr("class", "axis")
+                .call(d3.axisLeft(yScale).tickValues([0, 0.2, 0.4, 0.6, 0.8, 1.0]));
+            
+            // Y-axis label
+            plotG.append("text")
+                .attr("class", "axis-label")
+                .attr("transform", "rotate(-90)")
+                .attr("y", -35)
+                .attr("x", -height/2)
+                .style("text-anchor", "middle")
+                .text("Detected as AI");
+            
+            // Legend
+            const legend = plotG.append("g")
+                .attr("class", "legend")
+                .attr("transform", `translate(${width - 100}, 10)`);
+            
+            // Pangram legend
+            legend.append("rect")
+                .attr("x", 0)
+                .attr("y", 0)
+                .attr("width", 12)
+                .attr("height", 12)
+                .attr("fill", "#404040");  // Dark grey
+            
+            legend.append("text")
+                .attr("x", 15)
+                .attr("y", 10)
+                .style("font-size", "14px")
+                .text("Pangram");
+            
+            // GPTZero legend
+            legend.append("rect")
+                .attr("x", 0)
+                .attr("y", 18)
+                .attr("width", 12)
+                .attr("height", 12)
+                .attr("fill", "#999999");  // Light grey
+            
+            legend.append("text")
+                .attr("x", 15)
+                .attr("y", 28)
+                .style("font-size", "14px")
+                .text("GPTZero");
+        }
+        
+        createDetectionPlot();
+        
+        // Panel F: Binned Detectability Analysis
+        function createDetectabilityPlot() {
+            const g = d3.select("#panel-F");
+            const margin = {top: 30, right: 40, bottom: 60, left: 50};
+            const width = regularPanelWidth - margin.left - margin.right;
+            const height = panelHeight - margin.top - margin.bottom;
+            
+            const plotG = g.append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+            
+            const data = [
+                {bin: "0.0-0.2",
+                 incontext_expert: 0.6875358,
+                 incontext_lay: 0.4542334,
+                 fine_expert: 0.5135137,
+                 fine_lay: 0.5011709},
+                {bin: "0.2-0.4",
+                 incontext_expert: 0.5955182,
+                 incontext_lay: 0.4774213,
+                 fine_expert: 0.5579931,
+                 fine_lay: 0.5051181},
+                {bin: "0.4-0.6",
+                 incontext_expert: 0.4962566,
+                 incontext_lay: 0.5007069,
+                 fine_expert: 0.6015611,
+                 fine_lay: 0.5090647},
+                {bin: "0.6-0.8",
+                 incontext_expert: 0.3972892,
+                 incontext_lay: 0.5239895,
+                 fine_expert: 0.6435779,
+                 fine_lay: 0.5130101},
+                {bin: "0.8-1.0",
+                 incontext_expert: 0.3060669,
+                 incontext_lay: 0.5471682,
+                 fine_expert: 0.6834950,
+                 fine_lay: 0.5169540}
+            ];
+            
+            const xScale = d3.scaleBand()
+                .domain(data.map(d => d.bin))
+                .range([0, width])
+                .padding(0.1);
+            
+            const yScale = d3.scaleLinear()
+                .domain([0, 1])
+                .range([height, 0]);
+            
+            // Grid lines - only vertical
+            data.forEach(d => {
+                plotG.append("line")
+                    .attr("class", "grid-line")
+                    .attr("x1", xScale(d.bin) + xScale.bandwidth()/2)
+                    .attr("x2", xScale(d.bin) + xScale.bandwidth()/2)
+                    .attr("y1", 0)
+                    .attr("y2", height);
+            });
+            
+            // Reference line at 50%
+            plotG.append("line")
+                .attr("class", "reference-line")
+                .attr("x1", 0)
+                .attr("x2", width)
+                .attr("y1", yScale(0.5))
+                .attr("y2", yScale(0.5));
+            
+            // Line function
+            const line = d3.line()
+                .x(d => xScale(d.bin) + xScale.bandwidth()/2)
+                .y(d => yScale(d.value))
+                .curve(d3.curveMonotoneX);
+            
+            // Prepare data for lines
+            const lineData = [
+                {key: "In-context Expert", values: data.map(d => ({bin: d.bin, value: d.incontext_expert})), color: "#2166ac", dash: "5,0"},
+                {key: "In-context Lay", values: data.map(d => ({bin: d.bin, value: d.incontext_lay})), color: "#f46d43", dash: "5,0"},
+                {key: "Fine-tuned Expert", values: data.map(d => ({bin: d.bin, value: d.fine_expert})), color: "#2166ac", dash: "3,3"},
+                {key: "Fine-tuned Lay", values: data.map(d => ({bin: d.bin, value: d.fine_lay})), color: "#f46d43", dash: "3,3"}
+            ];
+            
+            // Draw lines
+            lineData.forEach(series => {
+                plotG.append("path")
+                    .datum(series.values)
+                    .attr("fill", "none")
+                    .attr("stroke", series.color)
+                    .attr("stroke-width", 2)
+                    .attr("stroke-dasharray", series.dash)
+                    .attr("d", line);
+                
+                // Add points
+                plotG.selectAll(`.point-${series.key.replace(/\s+/g, '-').replace(/\-/g, '')}`)
+                    .data(series.values)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", d => xScale(d.bin) + xScale.bandwidth()/2)
+                    .attr("cy", d => yScale(d.value))
+                    .attr("r", 3)
+                    .attr("fill", series.color)
+                    .attr("stroke", "white")
+                    .attr("stroke-width", 1);
+            });
+            
+            // X-axis
+            plotG.append("g")
+                .attr("class", "axis")
+                .attr("transform", `translate(0,${height})`)
+                .call(d3.axisBottom(xScale));
+            
+            // Y-axis
+            plotG.append("g")
+                .attr("class", "axis")
+                .call(d3.axisLeft(yScale).tickValues([0, 0.2, 0.4, 0.6, 0.8, 1.0]));
+            
+            // X-axis label
+            plotG.append("text")
+                .attr("class", "axis-label")
+                .attr("x", width/2)
+                .attr("y", height + 45)
+                .style("text-anchor", "middle")
+                .text("AI Detection Score (Binned)");
+            
+            // Y-axis label
+            plotG.append("text")
+                .attr("class", "axis-label")
+                .attr("transform", "rotate(-90)")
+                .attr("y", -35)
+                .attr("x", -height/2)
+                .style("text-anchor", "middle")
+                .text("Probability of Choosing AI");
+            
+            // Legend - positioned at bottom-left in 2x2 grid
+            const legend = plotG.append("g")
+                .attr("class", "legend")
+                .attr("transform", `translate(20, ${height - 35})`);
+            
+            const legendItems = [
+                {label: "In-Context (Expert)", color: "#1a4d72", dash: "5,0", x: 0, y: 0},
+                {label: "In-Context (Lay)", color: "#ff8c00", dash: "5,0", x: 150, y: 0},
+                {label: "Fine-tuned (Expert)", color: "#1a4d72", dash: "3,3", x: 0, y: 15},
+                {label: "Fine-tuned (Lay)", color: "#ff8c00", dash: "3,3", x: 150, y: 15}
+            ];
+            
+            legendItems.forEach((item) => {
+                legend.append("line")
+                    .attr("x1", item.x)
+                    .attr("x2", item.x + 15)
+                    .attr("y1", item.y)
+                    .attr("y2", item.y)
+                    .attr("stroke", item.color)
+                    .attr("stroke-width", 2)
+                    .attr("stroke-dasharray", item.dash);
+                
+                legend.append("text")
+                    .attr("x", item.x + 20)
+                    .attr("y", item.y + 4)
+                    .style("font-size", "14px")
+                    .text(item.label);
+            });
+        }
+        
+        createDetectabilityPlot();
+    </script>
+</body>
+</html>

@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 1400px;
+            width: 100%;
+        }
+        svg {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="1400" height="900" fill="white"/>
+          
+         
+          
+          <!-- Panel A: Left Panel (Stylistic + Quality Rankings) -->
+          <g transform="translate(50, 80)">
+            <!-- Panel label and compact title (moved right by 90px total) -->
+            <text x="100" y="15" font-family="Arial, sans-serif" font-size="22" fill="#333" font-weight="bold">A.</text>
+            <text x="140" y="15" font-family="Arial, sans-serif" font-size="18" fill="#333">Stylistic Fidelity (Top) and Writing Quality (Bottom) Performance by Author</text>
+            <text x="140" y="35" font-family="Arial, sans-serif" font-size="16" fill="#666">Jeffreys-smoothed estimates (n=24 trials per author, Expert+Lay pooled)</text>
+            
+            <!-- Color annotations positioned above plots -->
+            <text x="275" y="55" font-family="Arial, sans-serif" font-size="14" fill="#d73027" text-anchor="middle">Human Preferred</text>
+            <text x="400" y="55" font-family="Arial, sans-serif" font-size="14" fill="#666" text-anchor="middle">Parity</text>
+            <text x="525" y="55" font-family="Arial, sans-serif" font-size="14" fill="#1a9850" text-anchor="middle">AI Preferred</text>
+            
+            <!-- Stylistic Fidelity Rankings (Top half) -->
+            <g transform="translate(150, 70)">
+              <!-- Vertical grid lines -->
+              <g stroke="#f0f0f0" stroke-width="0.5">
+                <line x1="50" y1="0" x2="50" y2="330"/>   <!-- 0.1 -->
+                <line x1="100" y1="0" x2="100" y2="330"/> <!-- 0.2 -->
+                <line x1="150" y1="0" x2="150" y2="330"/> <!-- 0.3 -->
+                <line x1="200" y1="0" x2="200" y2="330"/> <!-- 0.4 -->
+                <line x1="300" y1="0" x2="300" y2="330"/> <!-- 0.6 -->
+                <line x1="350" y1="0" x2="350" y2="330"/> <!-- 0.7 -->
+                <line x1="400" y1="0" x2="400" y2="330"/> <!-- 0.8 -->
+                <line x1="450" y1="0" x2="450" y2="330"/> <!-- 0.9 -->
+              </g>
+              
+              <!-- 50% parity line -->
+              <line x1="250" y1="0" x2="250" y2="330" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+              
+              <!-- Data points - Stylistic Fidelity -->
+              <!-- Green points (>50%) -->
+              <g stroke="#1a9850" fill="#1a9850" stroke-width="1.5">
+                <!-- R. Gay: 98% -->
+                <line x1="451" y1="5" x2="500" y2="5"/>
+                <line x1="451" y1="3" x2="451" y2="7"/>
+                <line x1="500" y1="3" x2="500" y2="7"/>
+                <circle cx="490" cy="5" r="3" stroke="white"/>
+                
+                <!-- C. N. Adichie: 94% -->
+                <line x1="411" y1="16" x2="498" y2="16"/>
+                <line x1="411" y1="14" x2="411" y2="18"/>
+                <line x1="498" y1="14" x2="498" y2="18"/>
+                <circle cx="470" cy="16" r="3" stroke="white"/>
+                
+                <!-- H. Kang: 94% -->
+                <line x1="411" y1="27" x2="498" y2="27"/>
+                <line x1="411" y1="25" x2="411" y2="29"/>
+                <line x1="498" y1="25" x2="498" y2="29"/>
+                <circle cx="470" cy="27" r="3" stroke="white"/>
+                
+                <!-- M. Atwood: 94% -->
+                <line x1="411" y1="38" x2="498" y2="38"/>
+                <line x1="411" y1="36" x2="411" y2="40"/>
+                <line x1="498" y1="36" x2="498" y2="40"/>
+                <circle cx="470" cy="38" r="3" stroke="white"/>
+                
+                <!-- B. Lerner: 90% -->
+                <line x1="379" y1="49" x2="491" y2="49"/>
+                <line x1="379" y1="47" x2="379" y2="51"/>
+                <line x1="491" y1="47" x2="491" y2="51"/>
+                <circle cx="450" cy="49" r="3" stroke="white"/>
+                
+                <!-- J. Diaz: 90% -->
+                <line x1="379" y1="60" x2="491" y2="60"/>
+                <line x1="379" y1="58" x2="379" y2="62"/>
+                <line x1="491" y1="58" x2="491" y2="62"/>
+                <circle cx="450" cy="60" r="3" stroke="white"/>
+                
+                <!-- M. Robinson: 90% -->
+                <line x1="379" y1="71" x2="491" y2="71"/>
+                <line x1="379" y1="69" x2="379" y2="73"/>
+                <line x1="491" y1="69" x2="491" y2="73"/>
+                <circle cx="450" cy="71" r="3" stroke="white"/>
+                
+                <!-- K. Ishiguro: 86% -->
+                <line x1="351" y1="82" x2="482" y2="82"/>
+                <line x1="351" y1="80" x2="351" y2="84"/>
+                <line x1="482" y1="80" x2="482" y2="84"/>
+                <circle cx="430" cy="82" r="3" stroke="white"/>
+                
+                <!-- L. Davis: 86% -->
+                <line x1="351" y1="93" x2="482" y2="93"/>
+                <line x1="351" y1="91" x2="351" y2="95"/>
+                <line x1="482" y1="91" x2="482" y2="95"/>
+                <circle cx="430" cy="93" r="3" stroke="white"/>
+                
+                <!-- O. Pamuk: 82% -->
+                <line x1="325" y1="104" x2="471" y2="104"/>
+                <line x1="325" y1="102" x2="325" y2="106"/>
+                <line x1="471" y1="102" x2="471" y2="106"/>
+                <circle cx="410" cy="104" r="3" stroke="white"/>
+                
+                <!-- C. Strayed: 78% -->
+                <line x1="301" y1="115" x2="458" y2="115"/>
+                <line x1="301" y1="113" x2="301" y2="117"/>
+                <line x1="458" y1="113" x2="458" y2="117"/>
+                <circle cx="390" cy="115" r="3" stroke="white"/>
+                
+                <!-- M. J. Lee: 78% -->
+                <line x1="301" y1="126" x2="458" y2="126"/>
+                <line x1="301" y1="124" x2="301" y2="128"/>
+                <line x1="458" y1="124" x2="458" y2="128"/>
+                <circle cx="390" cy="126" r="3" stroke="white"/>
+                
+                <!-- S. Nunez: 78% -->
+                <line x1="301" y1="137" x2="458" y2="137"/>
+                <line x1="301" y1="135" x2="301" y2="139"/>
+                <line x1="458" y1="135" x2="458" y2="139"/>
+                <circle cx="390" cy="137" r="3" stroke="white"/>
+                
+                <!-- C. Whitehead: 74% -->
+                <line x1="278" y1="148" x2="444" y2="148"/>
+                <line x1="278" y1="146" x2="278" y2="150"/>
+                <line x1="444" y1="146" x2="444" y2="150"/>
+                <circle cx="370" cy="148" r="3" stroke="white"/>
+                
+                <!-- H. Murakami: 74% -->
+                <line x1="278" y1="159" x2="444" y2="159"/>
+                <line x1="278" y1="157" x2="278" y2="161"/>
+                <line x1="444" y1="157" x2="444" y2="161"/>
+                <circle cx="370" cy="159" r="3" stroke="white"/>
+                
+                <!-- I. McEwan: 74% -->
+                <line x1="278" y1="170" x2="444" y2="170"/>
+                <line x1="278" y1="168" x2="278" y2="172"/>
+                <line x1="444" y1="168" x2="444" y2="172"/>
+                <circle cx="370" cy="170" r="3" stroke="white"/>
+                
+                <!-- R. Cusk: 74% -->
+                <line x1="278" y1="181" x2="444" y2="181"/>
+                <line x1="278" y1="179" x2="278" y2="183"/>
+                <line x1="444" y1="179" x2="444" y2="183"/>
+                <circle cx="370" cy="181" r="3" stroke="white"/>
+                
+                <!-- S. Rooney: 74% -->
+                <line x1="278" y1="192" x2="444" y2="192"/>
+                <line x1="278" y1="190" x2="278" y2="194"/>
+                <line x1="444" y1="190" x2="444" y2="194"/>
+                <circle cx="370" cy="192" r="3" stroke="white"/>
+                
+                <!-- P. Everett: 70% -->
+                <line x1="255" y1="203" x2="429" y2="203"/>
+                <line x1="255" y1="201" x2="255" y2="205"/>
+                <line x1="429" y1="201" x2="429" y2="205"/>
+                <circle cx="350" cy="203" r="3" stroke="white"/>
+                
+                <!-- J. Lahiri: 66% -->
+                <line x1="234" y1="214" x2="413" y2="214"/>
+                <line x1="234" y1="212" x2="234" y2="216"/>
+                <line x1="413" y1="212" x2="413" y2="216"/>
+                <circle cx="330" cy="214" r="3" stroke="white"/>
+                
+                <!-- O. Moshfegh: 66% -->
+                <line x1="234" y1="225" x2="413" y2="225"/>
+                <line x1="234" y1="223" x2="234" y2="227"/>
+                <line x1="413" y1="223" x2="413" y2="227"/>
+                <circle cx="330" cy="225" r="3" stroke="white"/>
+                
+                <!-- Z. Smith: 66% -->
+                <line x1="234" y1="236" x2="413" y2="236"/>
+                <line x1="234" y1="234" x2="234" y2="238"/>
+                <line x1="413" y1="234" x2="413" y2="238"/>
+                <circle cx="330" cy="236" r="3" stroke="white"/>
+                
+                <!-- A. Proulx: 62% -->
+                <line x1="213" y1="247" x2="398" y2="247"/>
+                <line x1="213" y1="245" x2="213" y2="249"/>
+                <line x1="398" y1="245" x2="398" y2="249"/>
+                <circle cx="310" cy="247" r="3" stroke="white"/>
+                
+                <!-- G. Saunders: 62% -->
+                <line x1="213" y1="258" x2="398" y2="258"/>
+                <line x1="213" y1="256" x2="213" y2="260"/>
+                <line x1="398" y1="256" x2="398" y2="260"/>
+                <circle cx="310" cy="258" r="3" stroke="white"/>
+                
+                <!-- J. Franzen: 62% -->
+                <line x1="213" y1="269" x2="398" y2="269"/>
+                <line x1="213" y1="267" x2="213" y2="271"/>
+                <line x1="398" y1="267" x2="398" y2="271"/>
+                <circle cx="310" cy="269" r="3" stroke="white"/>
+                
+                <!-- S. Rushdie: 62% -->
+                <line x1="213" y1="280" x2="398" y2="280"/>
+                <line x1="213" y1="278" x2="213" y2="282"/>
+                <line x1="398" y1="278" x2="398" y2="282"/>
+                <circle cx="310" cy="280" r="3" stroke="white"/>
+                
+                <!-- Y. Ogawa: 62% -->
+                <line x1="213" y1="291" x2="398" y2="291"/>
+                <line x1="213" y1="289" x2="213" y2="293"/>
+                <line x1="398" y1="289" x2="398" y2="293"/>
+                <circle cx="310" cy="291" r="3" stroke="white"/>
+              </g>
+                
+                <g stroke="#999999" fill="#999999" stroke-width="1.5">
+                <!-- L. Erdrich: 50% -->
+                <line x1="155" y1="302" x2="345" y2="302"/>
+                <line x1="155" y1="300" x2="155" y2="304"/>
+                <line x1="345" y1="300" x2="345" y2="304"/>
+                <circle cx="250" cy="302" r="3" fill="#999999" stroke="white"/>
+             </g>
+              
+        
+              
+              <!-- Red points (<50%) -->
+              <g stroke="#d73027" fill="#d73027" stroke-width="1.5">
+                <!-- A. Ernaux: 42% -->
+                <line x1="119" y1="313" x2="307" y2="313"/>
+                <line x1="119" y1="311" x2="119" y2="315"/>
+                <line x1="307" y1="311" x2="307" y2="315"/>
+                <circle cx="210" cy="313" r="3" stroke="white"/>
+                
+                <!-- T. Tulathimutte: 18% -->
+                <line x1="30" y1="324" x2="175" y2="324"/>
+                <line x1="30" y1="322" x2="30" y2="326"/>
+                <line x1="175" y1="322" x2="175" y2="326"/>
+                <circle cx="90" cy="324" r="3" stroke="white"/>
+              </g>
+              
+              <!-- Author names for Stylistic -->
+              <g fill="#333" font-family="Arial, sans-serif" font-size="11" text-anchor="end">
+                <text x="-5" y="9">R. Gay</text>
+                <text x="-5" y="20">C. N. Adichie</text>
+                <text x="-5" y="31">H. Kang</text>
+                <text x="-5" y="42">M. Atwood</text>
+                <text x="-5" y="53">B. Lerner</text>
+                <text x="-5" y="64">J. Diaz</text>
+                <text x="-5" y="75">M. Robinson</text>
+                <text x="-5" y="86">K. Ishiguro</text>
+                <text x="-5" y="97">L. Davis</text>
+                <text x="-5" y="108">O. Pamuk</text>
+                <text x="-5" y="119">C. Strayed</text>
+                <text x="-5" y="130">M. J. Lee</text>
+                <text x="-5" y="141">S. Nunez</text>
+                <text x="-5" y="152">C. Whitehead</text>
+                <text x="-5" y="163">H. Murakami</text>
+                <text x="-5" y="174">I. McEwan</text>
+                <text x="-5" y="185">R. Cusk</text>
+                <text x="-5" y="196">S. Rooney</text>
+                <text x="-5" y="207">P. Everett</text>
+                <text x="-5" y="218">J. Lahiri</text>
+                <text x="-5" y="229">O. Moshfegh</text>
+                <text x="-5" y="240">Z. Smith</text>
+                <text x="-5" y="251">A. Proulx</text>
+                <text x="-5" y="262">G. Saunders</text>
+                <text x="-5" y="273">J. Franzen</text>
+                <text x="-5" y="284">S. Rushdie</text>
+                <text x="-5" y="295">Y. Ogawa</text>
+                <text x="-5" y="306">L. Erdrich</text>
+                <text x="-5" y="317">A. Ernaux</text>
+                <text x="-5" y="328">T. Tulathimutte</text>
+              </g>
+            </g>
+            
+            <!-- Soft separator line -->
+            <line x1="150" y1="410" x2="650" y2="410" stroke="#e0e0e0" stroke-width=".8" opacity="0.7"/>
+            
+            <!-- Writing Quality Rankings (Bottom half) - CORRECTED ORDERING AND COORDINATES -->
+            <g transform="translate(150, 420)">
+              <!-- Vertical grid lines -->
+              <g stroke="#f0f0f0" stroke-width="0.5">
+                <line x1="50" y1="0" x2="50" y2="330"/>   <!-- 0.1 -->
+                <line x1="100" y1="0" x2="100" y2="330"/> <!-- 0.2 -->
+                <line x1="150" y1="0" x2="150" y2="330"/> <!-- 0.3 -->
+                <line x1="200" y1="0" x2="200" y2="330"/> <!-- 0.4 -->
+                <line x1="300" y1="0" x2="300" y2="330"/> <!-- 0.6 -->
+                <line x1="350" y1="0" x2="350" y2="330"/> <!-- 0.7 -->
+                <line x1="400" y1="0" x2="400" y2="330"/> <!-- 0.8 -->
+                <line x1="450" y1="0" x2="450" y2="330"/> <!-- 0.9 -->
+              </g>
+              
+              <!-- 50% parity line -->
+              <line x1="250" y1="0" x2="250" y2="330" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+              
+              <!-- Data points - Writing Quality - CORRECTED ORDERING BY QUALITY SCORE -->
+              <!-- Green points (>50%) -->
+              <g stroke="#1a9850" fill="#1a9850" stroke-width="1.5">
+                <!-- C. Strayed: 86% - rank 1 -->
+                <line x1="351" y1="5" x2="482" y2="5"/>
+                <line x1="351" y1="3" x2="351" y2="7"/>
+                <line x1="482" y1="3" x2="482" y2="7"/>
+                <circle cx="430" cy="5" r="3" stroke="white"/>
+                
+                <!-- M. Robinson: 78% - rank 2 -->
+                <line x1="301" y1="16" x2="458" y2="16"/>
+                <line x1="301" y1="14" x2="301" y2="18"/>
+                <line x1="458" y1="14" x2="458" y2="18"/>
+                <circle cx="390" cy="16" r="3" stroke="white"/>
+                
+                <!-- C. Whitehead: 74% - rank 3 -->
+                <line x1="278" y1="27" x2="444" y2="27"/>
+                <line x1="278" y1="25" x2="278" y2="29"/>
+                <line x1="444" y1="25" x2="444" y2="29"/>
+                <circle cx="370" cy="27" r="3" stroke="white"/>
+                
+                <!-- H. Kang: 74% - rank 4 -->
+                <line x1="278" y1="38" x2="444" y2="38"/>
+                <line x1="278" y1="36" x2="278" y2="40"/>
+                <line x1="444" y1="36" x2="444" y2="40"/>
+                <circle cx="370" cy="38" r="3" stroke="white"/>
+                
+                <!-- H. Murakami: 74% - rank 5 -->
+                <line x1="278" y1="49" x2="444" y2="49"/>
+                <line x1="278" y1="47" x2="278" y2="51"/>
+                <line x1="444" y1="47" x2="444" y2="51"/>
+                <circle cx="370" cy="49" r="3" stroke="white"/>
+                
+                <!-- J. Diaz: 74% - rank 6 -->
+                <line x1="278" y1="60" x2="444" y2="60"/>
+                <line x1="278" y1="58" x2="278" y2="62"/>
+                <line x1="444" y1="58" x2="444" y2="62"/>
+                <circle cx="370" cy="60" r="3" stroke="white"/>
+                
+                <!-- R. Cusk: 74% - rank 7 -->
+                <line x1="278" y1="71" x2="444" y2="71"/>
+                <line x1="278" y1="69" x2="278" y2="73"/>
+                <line x1="444" y1="69" x2="444" y2="73"/>
+                <circle cx="370" cy="71" r="3" stroke="white"/>
+                
+                <!-- S. Rushdie: 74% - rank 8 -->
+                <line x1="278" y1="82" x2="444" y2="82"/>
+                <line x1="278" y1="80" x2="278" y2="84"/>
+                <line x1="444" y1="80" x2="444" y2="84"/>
+                <circle cx="370" cy="82" r="3" stroke="white"/>
+                
+                <!-- S. Nunez: 74% - rank 9 -->
+                <line x1="278" y1="93" x2="444" y2="93"/>
+                <line x1="278" y1="91" x2="278" y2="95"/>
+                <line x1="444" y1="91" x2="444" y2="95"/>
+                <circle cx="370" cy="93" r="3" stroke="white"/>
+                
+                <!-- O. Pamuk: 70% - rank 10 -->
+                <line x1="255" y1="104" x2="429" y2="104"/>
+                <line x1="255" y1="102" x2="255" y2="106"/>
+                <line x1="429" y1="102" x2="429" y2="106"/>
+                <circle cx="350" cy="104" r="3" stroke="white"/>
+                
+                <!-- L. Davis: 66% - rank 11 -->
+                <line x1="234" y1="115" x2="413" y2="115"/>
+                <line x1="234" y1="113" x2="234" y2="117"/>
+                <line x1="413" y1="113" x2="413" y2="117"/>
+                <circle cx="330" cy="115" r="3" stroke="white"/>
+                
+                <!-- P. Everett: 66% - rank 12 -->
+                <line x1="234" y1="126" x2="413" y2="126"/>
+                <line x1="234" y1="124" x2="234" y2="128"/>
+                <line x1="413" y1="124" x2="413" y2="128"/>
+                <circle cx="330" cy="126" r="3" stroke="white"/>
+                
+                <!-- J. Franzen: 62% - rank 13 -->
+                <line x1="213" y1="137" x2="398" y2="137"/>
+                <line x1="213" y1="135" x2="213" y2="139"/>
+                <line x1="398" y1="135" x2="398" y2="139"/>
+                <circle cx="310" cy="137" r="3" stroke="white"/>
+                
+                <!-- L. Erdrich: 62% - rank 14 -->
+                <line x1="213" y1="148" x2="398" y2="148"/>
+                <line x1="213" y1="146" x2="213" y2="150"/>
+                <line x1="398" y1="146" x2="398" y2="150"/>
+                <circle cx="310" cy="148" r="3" stroke="white"/>
+                
+                <!-- A. Proulx: 58% - rank 15 -->
+                <line x1="193" y1="159" x2="381" y2="159"/>
+                <line x1="193" y1="157" x2="193" y2="161"/>
+                <line x1="381" y1="157" x2="381" y2="161"/>
+                <circle cx="290" cy="159" r="3" stroke="white"/>
+                
+                <!-- G. Saunders: 58% - rank 16 -->
+                <line x1="193" y1="170" x2="381" y2="170"/>
+                <line x1="193" y1="168" x2="193" y2="172"/>
+                <line x1="381" y1="168" x2="381" y2="172"/>
+                <circle cx="290" cy="170" r="3" stroke="white"/>
+                
+                <!-- Z. Smith: 58% - rank 17 -->
+                <line x1="193" y1="181" x2="381" y2="181"/>
+                <line x1="193" y1="179" x2="193" y2="183"/>
+                <line x1="381" y1="179" x2="381" y2="183"/>
+                <circle cx="290" cy="181" r="3" stroke="white"/>
+                
+                <!-- C. N. Adichie: 54% - rank 18 -->
+                <line x1="174" y1="192" x2="364" y2="192"/>
+                <line x1="174" y1="190" x2="174" y2="194"/>
+                <line x1="364" y1="190" x2="364" y2="194"/>
+                <circle cx="270" cy="192" r="3" stroke="white"/>
+                
+                <!-- J. Lahiri: 54% - rank 19 -->
+                <line x1="174" y1="203" x2="364" y2="203"/>
+                <line x1="174" y1="201" x2="174" y2="205"/>
+                <line x1="364" y1="201" x2="364" y2="205"/>
+                <circle cx="270" cy="203" r="3" stroke="white"/>
+                
+                <!-- M. Atwood: 54% - rank 20 -->
+                <line x1="174" y1="214" x2="364" y2="214"/>
+                <line x1="174" y1="212" x2="174" y2="216"/>
+                <line x1="364" y1="212" x2="364" y2="216"/>
+                <circle cx="270" cy="214" r="3" stroke="white"/>
+                
+                <!-- R. Gay: 54% - rank 21 -->
+                <line x1="174" y1="225" x2="364" y2="225"/>
+                <line x1="174" y1="223" x2="174" y2="227"/>
+                <line x1="364" y1="223" x2="364" y2="227"/>
+                <circle cx="270" cy="225" r="3" stroke="white"/>
+                
+                <!-- S. Rooney: 54% - rank 22 -->
+                <line x1="174" y1="236" x2="364" y2="236"/>
+                <line x1="174" y1="234" x2="174" y2="238"/>
+                <line x1="364" y1="234" x2="364" y2="238"/>
+                <circle cx="270" cy="236" r="3" stroke="white"/>
+                
+                <!-- T. Tulathimutte: 54% - rank 23 -->
+                <line x1="174" y1="247" x2="364" y2="247"/>
+                <line x1="174" y1="245" x2="174" y2="249"/>
+                <line x1="364" y1="245" x2="364" y2="249"/>
+                <circle cx="270" cy="247" r="3" stroke="white"/>
+              </g>
+              
+              <!-- Red points (<50%) -->
+              <g stroke="#d73027" fill="#d73027" stroke-width="1.5">
+                <!-- M. J. Lee: 46% - rank 24 -->
+                <line x1="136" y1="258" x2="327" y2="258"/>
+                <line x1="136" y1="256" x2="136" y2="260"/>
+                <line x1="327" y1="256" x2="327" y2="260"/>
+                <circle cx="230" cy="258" r="3" stroke="white"/>
+                
+                <!-- A. Ernaux: 42% - rank 25 -->
+                <line x1="119" y1="269" x2="307" y2="269"/>
+                <line x1="119" y1="267" x2="119" y2="271"/>
+                <line x1="307" y1="267" x2="307" y2="271"/>
+                <circle cx="210" cy="269" r="3" stroke="white"/>
+                
+                <!-- B. Lerner: 42% - rank 26 -->
+                <line x1="119" y1="280" x2="307" y2="280"/>
+                <line x1="119" y1="278" x2="119" y2="282"/>
+                <line x1="307" y1="278" x2="307" y2="282"/>
+                <circle cx="210" cy="280" r="3" stroke="white"/>
+                
+                <!-- K. Ishiguro: 42% - rank 27 -->
+                <line x1="119" y1="291" x2="307" y2="291"/>
+                <line x1="119" y1="289" x2="119" y2="293"/>
+                <line x1="307" y1="289" x2="307" y2="293"/>
+                <circle cx="210" cy="291" r="3" stroke="white"/>
+                
+                <!-- O. Moshfegh: 38% - rank 28 -->
+                <line x1="102" y1="302" x2="287" y2="302"/>
+                <line x1="102" y1="300" x2="102" y2="304"/>
+                <line x1="287" y1="300" x2="287" y2="304"/>
+                <circle cx="190" cy="302" r="3" stroke="white"/>
+                
+                <!-- Y. Ogawa: 34% - rank 29 -->
+                <line x1="86" y1="313" x2="266" y2="313"/>
+                <line x1="86" y1="311" x2="86" y2="315"/>
+                <line x1="266" y1="311" x2="266" y2="315"/>
+                <circle cx="170" cy="313" r="3" stroke="white"/>
+                
+                <!-- I. McEwan: 30% - rank 30 -->
+                <line x1="71" y1="324" x2="244" y2="324"/>
+                <line x1="71" y1="322" x2="71" y2="326"/>
+                <line x1="244" y1="322" x2="244" y2="326"/>
+                <circle cx="150" cy="324" r="3" stroke="white"/>
+              </g>
+              
+              <!-- Author names for Quality - CORRECTED ORDERING -->
+              <g fill="#333" font-family="Arial, sans-serif" font-size="11" text-anchor="end">
+                <text x="-5" y="9">C. Strayed</text>
+                <text x="-5" y="20">M. Robinson</text>
+                <text x="-5" y="31">C. Whitehead</text>
+                <text x="-5" y="42">H. Kang</text>
+                <text x="-5" y="53">H. Murakami</text>
+                <text x="-5" y="64">J. Diaz</text>
+                <text x="-5" y="75">R. Cusk</text>
+                <text x="-5" y="86">S. Rushdie</text>
+                <text x="-5" y="97">S. Nunez</text>
+                <text x="-5" y="108">O. Pamuk</text>
+                <text x="-5" y="119">L. Davis</text>
+                <text x="-5" y="130">P. Everett</text>
+                <text x="-5" y="141">J. Franzen</text>
+                <text x="-5" y="152">L. Erdrich</text>
+                <text x="-5" y="163">A. Proulx</text>
+                <text x="-5" y="174">G. Saunders</text>
+                <text x="-5" y="185">Z. Smith</text>
+                <text x="-5" y="196">C. N. Adichie</text>
+                <text x="-5" y="207">J. Lahiri</text>
+                <text x="-5" y="218">M. Atwood</text>
+                <text x="-5" y="229">R. Gay</text>
+                <text x="-5" y="240">S. Rooney</text>
+                <text x="-5" y="251">T. Tulathimutte</text>
+                <text x="-5" y="262">M. J. Lee</text>
+                <text x="-5" y="273">A. Ernaux</text>
+                <text x="-5" y="284">B. Lerner</text>
+                <text x="-5" y="295">K. Ishiguro</text>
+                <text x="-5" y="306">O. Moshfegh</text>
+                <text x="-5" y="317">Y. Ogawa</text>
+                <text x="-5" y="328">I. McEwan</text>
+              </g>
+            </g>
+            
+            <!-- Y-axis line for Panel A -->
+            <g stroke="#333" stroke-width="0.5">
+              <line x1="150" y1="70" x2="150" y2="750"/>
+            </g>
+            
+            <!-- Shared X-axis for Panel A -->
+            <g transform="translate(150, 750)">
+              <g stroke="#333" stroke-width="0.5">
+                <line x1="0" y1="0" x2="500" y2="0"/>
+                <!-- X-axis labels -->
+                <g fill="#333" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
+                  <text x="0" y="15">0.0</text>
+                  <text x="50" y="15">0.1</text>
+                  <text x="100" y="15">0.2</text>
+                  <text x="150" y="15">0.3</text>
+                  <text x="200" y="15">0.4</text>
+                  <text x="250" y="15">0.5</text>
+                  <text x="300" y="15">0.6</text>
+                  <text x="350" y="15">0.7</text>
+                  <text x="400" y="15">0.8</text>
+                  <text x="450" y="15">0.9</text>
+                  <text x="500" y="15">1.0</text>
+                </g>
+              </g>
+              <!-- X-axis label -->
+              <text x="250" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#333">AI Preference Rate</text>
+            </g>
+          </g>
+          
+          <!-- Panel B: Right Panel (Stylistic + Quality Scatter Plots) -->
+          <g transform="translate(750, 80)">
+            <!-- Panel label and title (moved right by 40px, split into two lines) -->
+            <text x="40" y="15" font-family="Arial, sans-serif" font-size="22" fill="#333" font-weight="bold">B.</text>
+            <text x="80" y="15" font-family="Arial, sans-serif" font-size="18" fill="#333">Fine-tuned Data Size vs Stylistic Fidelity (Top) and </text>
+            <text x="80" y="35" font-family="Arial, sans-serif" font-size="18" fill="#333"> Writing Quality (Bottom) Performance</text>
+            
+            <!-- Stylistic Fidelity vs Data Size (Top half) -->
+            <g transform="translate(80, 70)">
+              <!-- Vertical grid lines only -->
+              <g stroke="#f0f0f0" stroke-width="0.5">
+                <line x1="42" y1="0" x2="42" y2="330"/>   <!-- 1M tokens -->
+                <line x1="84" y1="0" x2="84" y2="330"/>   <!-- 2M tokens -->
+                <line x1="125" y1="0" x2="125" y2="330"/> <!-- 3M tokens -->
+                <line x1="167" y1="0" x2="167" y2="330"/> <!-- 4M tokens -->
+                <line x1="208" y1="0" x2="208" y2="330"/> <!-- 5M tokens -->
+                <line x1="250" y1="0" x2="250" y2="330"/> <!-- 6M tokens -->
+                <line x1="292" y1="0" x2="292" y2="330"/> <!-- 7M tokens -->
+                <line x1="333" y1="0" x2="333" y2="330"/> <!-- 8M tokens -->
+                <line x1="375" y1="0" x2="375" y2="330"/> <!-- 9M tokens -->
+                <line x1="417" y1="0" x2="417" y2="330"/> <!-- 10M tokens -->
+                <line x1="458" y1="0" x2="458" y2="330"/> <!-- 11M tokens -->
+              </g>
+              
+            
+              <!-- 50% parity line -->
+              <line x1="0" y1="165" x2="500" y2="165" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+              
+              <!-- Regression line: y = 0.00303x + 0.72006 -->
+              <line x1="0" y1="92" x2="458" y2="81" stroke="#333" stroke-width="2" opacity="0.8" stroke-dasharray="4,4"/>
+              
+              <!-- Data points - Stylistic Fidelity -->
+              <g fill="#1a9850" stroke="white" stroke-width="1.5">
+                <!-- R. Gay: 2.68M tokens, 0.98 success -->
+                <circle cx="112" cy="7" r="3"/>
+                <!-- C. N. Adichie: 4.44M tokens, 0.94 success -->
+                <circle cx="185" cy="20" r="3"/>
+                <!-- H. Kang: 1.31M tokens, 0.94 success -->
+                <circle cx="55" cy="20" r="3"/>
+                <!-- M. Atwood: 4.54M tokens, 0.94 success -->
+                <circle cx="189" cy="20" r="3"/>
+                <!-- B. Lerner: 1.83M tokens, 0.9 success -->
+                <circle cx="76" cy="33" r="3"/>
+                <!-- J. Diaz: 1.21M tokens, 0.9 success -->
+                <circle cx="50" cy="33" r="3"/>
+                <!-- M. Robinson: 6.90M tokens, 0.9 success -->
+                <circle cx="288" cy="33" r="3"/>
+                <!-- Ishiguro: 4.98M tokens, 0.86 success -->
+                <circle cx="208" cy="46" r="3"/>
+                <!-- L. Davis: 2.00M tokens, 0.86 success -->
+                <circle cx="83" cy="46" r="3"/>
+                <!-- O. Pamuk: 10.90M tokens, 0.82 success -->
+                <circle cx="454" cy="59" r="3"/>
+                <!-- C. Strayed: 2.09M tokens, 0.78 success -->
+                <circle cx="87" cy="73" r="3"/>
+                <!-- M. J. Lee: 2.50M tokens, 0.78 success -->
+                <circle cx="104" cy="73" r="3"/>
+                <!-- S. Nunez: 2.84M tokens, 0.78 success -->
+                <circle cx="118" cy="73" r="3"/>
+                <!-- Whitehead: 5.21M tokens, 0.74 success -->
+                <circle cx="217" cy="86" r="3"/>
+                <!-- Murakami: 4.64M tokens, 0.74 success -->
+                <circle cx="193" cy="86" r="3"/>
+                <!-- McEwan: 7.22M tokens, 0.74 success -->
+                <circle cx="301" cy="86" r="3"/>
+                <!-- R. Cusk: 1.97M tokens, 0.74 success -->
+                <circle cx="82" cy="86" r="3"/>
+                <!-- S. Rooney: 2.11M tokens, 0.74 success -->
+                <circle cx="88" cy="86" r="3"/>
+                <!-- P. Everett: 5.34M tokens, 0.7 success -->
+                <circle cx="223" cy="99" r="3"/>
+                <!-- J. Lahiri: 2.63M tokens, 0.66 success -->
+                <circle cx="110" cy="112" r="3"/>
+                <!-- O. Moshfegh: 1.63M tokens, 0.66 success -->
+                <circle cx="68" cy="112" r="3"/>
+                <!-- Z. Smith: 4.85M tokens, 0.66 success -->
+                <circle cx="202" cy="112" r="3"/>
+                <!-- A. Proulx: 6.52M tokens, 0.62 success -->
+                <circle cx="272" cy="125" r="3"/>
+                <!-- Saunders: 3.17M tokens, 0.62 success -->
+                <circle cx="132" cy="125" r="3"/>
+                <!-- Franzen: 7.70M tokens, 0.62 success -->
+                <circle cx="321" cy="125" r="3"/>
+                <!-- Rushdie: 5.30M tokens, 0.62 success -->
+                <circle cx="221" cy="125" r="3"/>
+                <!-- Y. Ogawa: 1.75M tokens, 0.62 success -->
+                <circle cx="73" cy="125" r="3"/>
+                
+              </g>
+              
+              <!-- Gray point -->
+              <g fill="#999999" stroke="white" stroke-width="1.5">
+                  <!-- L. Erdrich: 5.83M tokens, 0.5 success -->
+                  <circle cx="243" cy="165" r="3"/>
+              </g>
+              
+              <!-- Red points -->
+              <g fill="#d73027" stroke="white" stroke-width="1.5">
+                <!-- A. Ernaux: 3.06M tokens, 0.42 success -->
+                <circle cx="128" cy="191" r="3"/>
+                <!-- Tulathimutte: 0.89M tokens, 0.18 success -->
+                <circle cx="37" cy="270" r="3"/>
+              </g>
+              
+              <!-- Author labels for stylistic scatter - repositioned to avoid overlaps and parity line -->
+              <g fill="#333" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">
+                <text x="112" y="1">R.Gay</text>
+                <text x="130" y="20" text-anchor="start">C.Adichie</text>
+                <text x="35" y="15" text-anchor="start">H.Kang</text>
+                <text x="195" y="20" text-anchor="start">M.Atwood</text>
+                <text x="65" y="30" text-anchor="start">B.Lerner</text>
+                <text x="15" y="30" text-anchor="start">J.Diaz</text>
+                <text x="270" y="28" text-anchor="start">M.Robinson</text>
+                <text x="190" y="40" text-anchor="start">K.Ishiguro</text>
+                <text x="90" y="45" text-anchor="start">L.Davis</text>
+                <text x="474" y="55" text-anchor="end">O.Pamuk</text>
+                <text x="30" y="75" text-anchor="start">C.Strayed</text>
+                <text x="90" y="65" text-anchor="start">M.J.Lee</text>
+                <text x="125" y="75" text-anchor="start">S.Nunez</text>
+                <text x="230" y="80" text-anchor="start">C.Whitehead</text>
+                <text x="168" y="83" text-anchor="start">H.Murakami</text>
+                <text x="290" y="100" text-anchor="start">I.McEwan</text>
+                <text x="40" y="85" text-anchor="start">R.Cusk</text>
+                <text x="95" y="85" text-anchor="start">S.Rooney</text>
+                <text x="230" y="100" text-anchor="start">P.Everett</text>
+                <text x="100" y="108" text-anchor="start">J.Lahiri</text>
+                <text x="35" y="105" text-anchor="start">O.Moshfegh</text>
+                <text x="210" y="115" text-anchor="start">Z.Smith</text>
+                <text x="272" y="120" text-anchor="start">A.Proulx</text>
+                <text x="120" y="120" text-anchor="start">G.Saunders</text>
+                <text x="320" y="120" text-anchor="start">J.Franzen</text>
+                <text x="210" y="138" text-anchor="start">S.Rushdie</text>
+                <text x="53" y="138" text-anchor="start">Y.Ogawa</text>
+                <text x="240" y="160" text-anchor="start">L.Erdrich</text>
+                <text x="128" y="205" text-anchor="start">A.Ernaux</text>
+                <text x="17" y="265" text-anchor="start">T.Tulathimutte</text>
+              </g>
+              
+              <!-- Regression equation for stylistic -->
+              <text x="350" y="65" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">ŷ = 0.00303x + 0.72</text>
+              <text x="350" y="75" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">R² = 0.0017</text>
+            </g>
+            
+            <!-- Soft separator line -->
+            <line x1="80" y1="410" x2="580" y2="410" stroke="#e0e0e0" stroke-width="0.8" opacity="0.7"/>
+            
+            <!-- Writing Quality vs Data Size (Bottom half) - FIXED COORDINATES -->
+            <g transform="translate(80, 420)">
+              <!-- Vertical grid lines only -->
+              <g stroke="#f0f0f0" stroke-width="0.5">
+                <line x1="42" y1="0" x2="42" y2="330"/>   <!-- 1M tokens -->
+                <line x1="84" y1="0" x2="84" y2="330"/>   <!-- 2M tokens -->
+                <line x1="125" y1="0" x2="125" y2="330"/> <!-- 3M tokens -->
+                <line x1="167" y1="0" x2="167" y2="330"/> <!-- 4M tokens -->
+                <line x1="208" y1="0" x2="208" y2="330"/> <!-- 5M tokens -->
+                <line x1="250" y1="0" x2="250" y2="330"/> <!-- 6M tokens -->
+                <line x1="292" y1="0" x2="292" y2="330"/> <!-- 7M tokens -->
+                <line x1="333" y1="0" x2="333" y2="330"/> <!-- 8M tokens -->
+                <line x1="375" y1="0" x2="375" y2="330"/> <!-- 9M tokens -->
+                <line x1="417" y1="0" x2="417" y2="330"/> <!-- 10M tokens -->
+                <line x1="458" y1="0" x2="458" y2="330"/> <!-- 11M tokens -->
+              </g>
+              
+        
+              
+              <!-- 50% parity line - CORRECTED -->
+              <line x1="0" y1="165" x2="500" y2="165" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+              
+              <!-- Regression line: y = 0.006734x + 0.566835 - CORRECTED -->
+              <!-- At x=0: y=0.566835 → (1-0.566835)*330 = 143 -->
+              <!-- At x=11: y=0.640909 → (1-0.640909)*330 = 118 -->
+              <line x1="0" y1="143" x2="458" y2="118" stroke="#333" stroke-width="2" opacity="0.8" stroke-dasharray="4,4"/>
+              
+              <!-- Data points - Writing Quality - FIXED COORDINATES -->
+              <g fill="#1a9850" stroke="white" stroke-width="1.5">
+                <!-- Cheryl Strayed: 2.09M tokens, 0.86 success → (1-0.86)*330 = 46 -->
+                <circle cx="87" cy="46" r="3"/>
+                <!-- Marilynne Robinson: 6.90M tokens, 0.78 success → (1-0.78)*330 = 73 -->
+                <circle cx="288" cy="73" r="3"/>
+                <!-- Colson Whitehead: 5.21M tokens, 0.74 success → (1-0.74)*330 = 86 -->
+                <circle cx="217" cy="86" r="3"/>
+                <!-- Han Kang: 1.31M tokens, 0.74 success → (1-0.74)*330 = 86 -->
+                <circle cx="55" cy="86" r="3"/>
+                <!-- Haruki Murakami: 4.64M tokens, 0.74 success → (1-0.74)*330 = 86 -->
+                <circle cx="193" cy="86" r="3"/>
+                <!-- Junot Diaz: 1.21M tokens, 0.74 success → (1-0.74)*330 = 86 -->
+                <circle cx="50" cy="86" r="3"/>
+                <!-- Rachel Cusk: 1.97M tokens, 0.74 success → (1-0.74)*330 = 86 -->
+                <circle cx="82" cy="86" r="3"/>
+                <!-- Salman Rushdie: 5.30M tokens, 0.74 success → (1-0.74)*330 = 86 -->
+                <circle cx="221" cy="86" r="3"/>
+                <!-- Sigrid Nunez: 2.84M tokens, 0.74 success → (1-0.74)*330 = 86 -->
+                <circle cx="118" cy="86" r="3"/>
+                <!-- Orhan Pamuk: 10.90M tokens, 0.7 success → (1-0.70)*330 = 99 -->
+                <circle cx="454" cy="99" r="3"/>
+                <!-- Lydia Davis: 2.00M tokens, 0.66 success → (1-0.66)*330 = 112 -->
+                <circle cx="83" cy="112" r="3"/>
+                <!-- Percival Everett: 5.34M tokens, 0.66 success → (1-0.66)*330 = 112 -->
+                <circle cx="223" cy="112" r="3"/>
+                <!-- Jonathan Franzen: 7.70M tokens, 0.62 success → (1-0.62)*330 = 125 -->
+                <circle cx="321" cy="125" r="3"/>
+                <!-- Louise Erdrich: 5.83M tokens, 0.62 success → (1-0.62)*330 = 125 -->
+                <circle cx="243" cy="125" r="3"/>
+                <!-- Annie Proulx: 6.52M tokens, 0.58 success → (1-0.58)*330 = 139 -->
+                <circle cx="272" cy="139" r="3"/>
+                <!-- George Saunders: 3.17M tokens, 0.58 success → (1-0.58)*330 = 139 -->
+                <circle cx="132" cy="139" r="3"/>
+                <!-- Zadie Smith: 4.85M tokens, 0.58 success → (1-0.58)*330 = 139 -->
+                <circle cx="202" cy="139" r="3"/>
+                <!-- Chimamanda Ngozi Adichie: 4.44M tokens, 0.54 success → (1-0.54)*330 = 152 -->
+                <circle cx="185" cy="152" r="3"/>
+                <!-- Jhumpa Lahiri: 2.63M tokens, 0.54 success → (1-0.54)*330 = 152 -->
+                <circle cx="110" cy="152" r="3"/>
+                <!-- Margaret Atwood: 4.54M tokens, 0.54 success → (1-0.54)*330 = 152 -->
+                <circle cx="189" cy="152" r="3"/>
+                <!-- Roxane Gay: 2.68M tokens, 0.54 success → (1-0.54)*330 = 152 -->
+                <circle cx="112" cy="152" r="3"/>
+                <!-- Sally Rooney: 2.11M tokens, 0.54 success → (1-0.54)*330 = 152 -->
+                <circle cx="88" cy="152" r="3"/>
+                <!-- Tony Tulathimutte: 0.89M tokens, 0.54 success → (1-0.54)*330 = 152 -->
+                <circle cx="37" cy="152" r="3"/>
+              </g>
+              
+              <!-- Red points -->
+              <g fill="#d73027" stroke="white" stroke-width="1.5">
+                <!-- Min Jin Lee: 2.50M tokens, 0.46 success → (1-0.46)*330 = 178 -->
+                <circle cx="104" cy="178" r="3"/>
+                <!-- Annie Ernaux: 3.06M tokens, 0.42 success → (1-0.42)*330 = 191 -->
+                <circle cx="128" cy="191" r="3"/>
+                <!-- Ben Lerner: 1.83M tokens, 0.42 success → (1-0.42)*330 = 191 -->
+                <circle cx="76" cy="191" r="3"/>
+                <!-- Kazuo Ishiguro: 4.98M tokens, 0.42 success → (1-0.42)*330 = 191 -->
+                <circle cx="208" cy="191" r="3"/>
+                <!-- Ottessa Moshfegh: 1.63M tokens, 0.38 success → (1-0.38)*330 = 205 -->
+                <circle cx="68" cy="205" r="3"/>
+                <!-- Yoko Ogawa: 1.75M tokens, 0.34 success → (1-0.34)*330 = 218 -->
+                <circle cx="73" cy="218" r="3"/>
+                <!-- Ian McEwan: 7.22M tokens, 0.3 success → (1-0.30)*330 = 231 -->
+                <circle cx="301" cy="231" r="3"/>
+              </g>
+              
+              <!-- Author labels for quality scatter - repositioned to avoid overlaps and parity line -->
+              <g fill="#333" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">
+                <text x="67" y="40" text-anchor="start">C.Strayed</text>
+                <text x="295" y="75" text-anchor="start">M.Robinson</text>
+                <text x="200" y="100" text-anchor="start">C.Whitehead</text>
+                <text x="30" y="75" text-anchor="start">H.Kang</text>
+                <text x="135" y="100" text-anchor="start">H.Murakami</text>
+                <text x="10" y="85" text-anchor="start">J.Diaz</text>
+                <text x="70" y="80" text-anchor="start">R.Cusk</text>
+                <text x="230" y="90" text-anchor="start">S.Rushdie</text>
+                <text x="110" y="80" text-anchor="start">S.Nunez</text>
+                <text x="474" y="90" text-anchor="end">O.Pamuk</text>
+                <text x="63" y="105" text-anchor="start">L.Davis</text>
+                <text x="230" y="115" text-anchor="start">P.Everett</text>
+                <text x="320" y="135" text-anchor="start">J.Franzen</text>
+                <text x="250" y="125" text-anchor="start">L.Erdrich</text>
+                <text x="270" y="155" text-anchor="start">A.Proulx</text>
+                <text x="112" y="130" text-anchor="start">G.Saunders</text>
+                <text x="210" y="145" text-anchor="start">Z.Smith</text>
+                <text x="145" y="147" text-anchor="start">C.Adichie</text>
+                <text x="90" y="148" text-anchor="start">J.Lahiri</text>
+                <text x="195" y="155" text-anchor="start">M.Atwood</text>
+                <text x="118" y="158" text-anchor="start">R.Gay</text>
+                <text x="38" y="150" text-anchor="start">S.Rooney</text>
+                <text x="17" y="162" text-anchor="start">T.Tulathimutte</text>
+                <text x="110" y="180" text-anchor="start">M.J.Lee</text>
+                <text x="140" y="190" text-anchor="start">A.Ernaux</text>
+                <text x="56" y="185" text-anchor="start">B.Lerner</text>
+                <text x="200" y="185" text-anchor="start">K.Ishiguro</text>
+                <text x="75" y="208" text-anchor="start">O.Moshfegh</text>
+                <text x="53" y="230" text-anchor="start">Y.Ogawa</text>
+                <text x="305" y="225" text-anchor="start">I.McEwan</text>
+              </g>
+              
+              <!-- Regression equation for quality -->
+              <text x="380" y="105" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">ŷ = 0.00673x + 0.57</text>
+              <text x="380" y="115" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">R² = 0.0122</text>
+            </g>
+            
+            <!-- Shared X-axis for Panel B -->
+            <g transform="translate(80, 750)">
+              <g stroke="#333" stroke-width="0.5">
+                <line x1="0" y1="0" x2="500" y2="0"/>
+                <!-- X-axis labels -->
+                <g fill="#333" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">
+                  <text x="0" y="15">0</text>
+                  <text x="42" y="15">1</text>
+                  <text x="84" y="15">2</text>
+                  <text x="125" y="15">3</text>
+                  <text x="167" y="15">4</text>
+                  <text x="208" y="15">5</text>
+                  <text x="250" y="15">6</text>
+                  <text x="292" y="15">7</text>
+                  <text x="333" y="15">8</text>
+                  <text x="375" y="15">9</text>
+                  <text x="417" y="15">10</text>
+                  <text x="458" y="15">11</text>
+                  <text x="500" y="15">12</text>
+                </g>
+              </g>
+              <!-- X-axis label -->
+              <text x="250" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#333">Fine-tuning corpus size (Million tokens)</text>
+            </g>
+            
+            <!-- Y-axis for Panel B - CORRECTED COORDINATES -->
+            <g transform="translate(80, 70)">
+              <g stroke="#333" stroke-width="0.5">
+                <line x1="0" y1="0" x2="0" y2="680"/>
+                <!-- Y-axis labels - CORRECTED POSITIONS -->
+                <g fill="#333" font-family="Arial, sans-serif" font-size="14" text-anchor="end">
+                  <!-- Top subplot labels -->
+                  <text x="-5" y="4">1.0</text>
+                  <text x="-5" y="37">0.9</text>
+                  <text x="-5" y="70">0.8</text>
+                  <text x="-5" y="103">0.7</text>
+                  <text x="-5" y="136">0.6</text>
+                  <text x="-5" y="169">0.5</text>
+                  <text x="-5" y="202">0.4</text>
+                  <text x="-5" y="235">0.3</text>
+                  <text x="-5" y="268">0.2</text>
+                  <text x="-5" y="301">0.1</text>
+                  <text x="-5" y="334">0.0</text>
+                  
+                  <!-- Bottom subplot labels (offset by 350px) -->
+                  <text x="-5" y="354">1.0</text>
+                  <text x="-5" y="387">0.9</text>
+                  <text x="-5" y="420">0.8</text>
+                  <text x="-5" y="453">0.7</text>
+                  <text x="-5" y="486">0.6</text>
+                  <text x="-5" y="519">0.5</text>
+                  <text x="-5" y="552">0.4</text>
+                  <text x="-5" y="585">0.3</text>
+                  <text x="-5" y="618">0.2</text>
+                  <text x="-5" y="651">0.1</text>
+                  <text x="-5" y="684">0.0</text>
+                </g>
+              </g>
+            </g>
+            
+            <!-- Y-axis label for Panel B -->
+            <text x="35" y="435" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#333" transform="rotate(-90, 25, 415)">AI Preference Rate</text>
+            
+            <!-- Combined legend for Panel B -->
+            <g transform="translate(350, 240)">
+              <!-- Green -->
+              <circle cx="5" cy="20" r="4" fill="#1a9850" stroke="white" stroke-width="1"/>
+              <text x="15" y="24" font-family="Arial, sans-serif" font-size="14" fill="#1a9850">AI Preferred (>50%)</text>
+              
+              <!-- Gray/Parity -->
+              <circle cx="5" cy="40" r="4" fill="#999999" stroke="white" stroke-width="1"/>
+              <text x="15" y="44" font-family="Arial, sans-serif" font-size="14" fill="#666">Parity (=50%)</text>
+              
+              <!-- Red -->
+              <circle cx="5" cy="60" r="4" fill="#d73027" stroke="white" stroke-width="1"/>
+              <text x="15" y="64" font-family="Arial, sans-serif" font-size="14" fill="#d73027">Human Preferred (<50%)</text>
+            </g>
+          </g>
+        </svg>
+    </div>
+</body>
+</html>
